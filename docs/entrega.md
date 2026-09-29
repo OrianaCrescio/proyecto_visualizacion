@@ -34,10 +34,10 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 
 *Borrador:*
 - Serie por región 1984–2025 (SIIT-BCN, con datos MINEDUC/SIES — *verificar*): se pasa de formato ancho
-  a largo y se calcula la proporción de mujeres y la distancia a la paridad (`scripts/procesar_regiones.py`).
+  a largo y se calcula la proporción de mujeres y la distancia a la paridad (`procesamiento/scripts/procesar_regiones.py`).
 - Microdatos de matrícula 2007–2026 (Centro de Estudios MINEDUC, ~1,5 M registros por año): se agregan a
   conteos por año × nivel × tipo de institución × área × carrera genérica × sexo
-  (`scripts/procesar_carreras.py`, 3,4 MB). Los totales calzan con la serie regional.
+  (`procesamiento/scripts/procesar_carreras.py`, 3,4 MB). Los totales calzan con la serie regional.
 - Para la sonificación, la proporción de mujeres se convierte en altura: 1 punto porcentual = 1 semitono
   respecto de una nota fija que representa el 50 %.
 
@@ -48,7 +48,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 | Campo | |
 |---|---|
 | **Versión / fecha** | V1 · 28/09/2026 |
-| **Commit / tag** | `v1` · [enlace]() |
+| **Commit / tag** | `v1` (commit `0ba61f3`) · [enlace]() · [copia navegable](evidencia/v1/pagina/) |
 | **Evidencia** | ![V1](evidencia/v1/captura.png) · [video V1]() |
 
 **Qué cambió** (en V1: decisiones iniciales · máx. 8 líneas) — *borrador*

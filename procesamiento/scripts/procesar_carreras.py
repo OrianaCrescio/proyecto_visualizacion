@@ -4,16 +4,16 @@ y carrera genérica, separados por sexo.
 
 Entrada : el .zip "sin descomprimir.zip" (trae un .rar por año), o una carpeta con
           .rar / .csv por año. Los datos originales NO se suben al repo (~500 MB por año).
-Salida  : data/processed/matricula_carrera.csv
+Salida  : procesamiento/intermedios/matricula_carrera.csv
           anio × nivel_global × tipo_inst_1 × area_conocimiento × cine_f_13_area ×
           cine_f_13_subarea × area_carrera_generica × sexo → n (matriculados)
 
 Requiere: pip install pandas unrar-cffi
 
 Uso:
-    python3 scripts/procesar_carreras.py RUTA [AÑO ...]
-    python3 scripts/procesar_carreras.py "../InfoVis/Carrera/sin descomprimir.zip"
-    python3 scripts/procesar_carreras.py "../InfoVis/Carrera/sin descomprimir.zip" 2007 2008
+    python3 procesamiento/scripts/procesar_carreras.py RUTA [AÑO ...]
+    python3 procesamiento/scripts/procesar_carreras.py "../InfoVis/Carrera/sin descomprimir.zip"
+    python3 procesamiento/scripts/procesar_carreras.py "../InfoVis/Carrera/sin descomprimir.zip" 2007 2008
 Si se indican años, solo se reprocesan esos y se conservan los demás en la salida.
 """
 import io
@@ -25,8 +25,9 @@ from pathlib import Path
 
 import pandas as pd
 
-RAIZ = Path(__file__).resolve().parent.parent
-SALIDA = RAIZ / "data" / "processed" / "matricula_carrera.csv"
+RAIZ = Path(__file__).resolve().parents[2]          # raíz del repo
+PROC = RAIZ / "procesamiento"
+SALIDA = PROC / "intermedios" / "matricula_carrera.csv"
 
 COLUMNAS = {
     "cat_periodo": "anio",

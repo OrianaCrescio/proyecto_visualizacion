@@ -26,9 +26,9 @@ sin explicación**: cada uno nace de una revisión, de usuarios, de un principio
 
 1. Merge de `develop` a `main` (queda publicada en GitHub Pages).
 2. Tag: `git tag -a vN -m "VN: <resumen>" && git push origin vN`.
-3. Copia navegable (recomendado por el enunciado): copiar `index.html`, `css/`, `js/` a `/vN/`
-   ajustando la ruta de los datos a `../data/...`.
-4. Capturas en `docs/evidencia/vN/` y video corto con audio (YouTube, no listado) enlazado en `entrega.md`.
+3. Copia navegable (recomendado por el enunciado): copiar la carpeta `pagina/` completa a
+   `docs/evidencia/vN/pagina/` (incluye sus datos, así funciona sola). Ver `docs/evidencia/README.md`.
+4. Capturas y video corto con audio en `docs/evidencia/vN/` (el video largo en YouTube, enlazado en `entrega.md`).
 5. Completar la sección de la versión en `entrega.md`.
 
 ## Checklist por versión

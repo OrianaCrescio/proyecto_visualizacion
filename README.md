@@ -22,39 +22,54 @@ Queremos mostrar no solo que las mujeres ya son mayoría en la matrícula de edu
 ## Estructura
 
 ```
-index.html, css/, js/            visualización (raíz de GitHub Pages)
-  js/main.js                     vista por regiones: gráfico, slider/play y tooltip (D3)
-  js/carreras.js                 vista por áreas y carreras (hombres | mujeres, 2007 vs. año elegido)
-  js/sonido.js                   sonificación (Web Audio API)
-data/raw/                        País.csv y Región.csv (serie 1984–2025)
-data/processed/
-  matricula_genero_region.csv    % de mujeres por región y año → la usa la viz
-  matricula_carrera.csv          microdatos 2007–2026 agregados por área/carrera y sexo
-  carreras_pregrado.csv          resumen liviano (pregrado) → lo usa la vista de carreras
-scripts/
-  procesar_regiones.py           data/raw/Región.csv → matricula_genero_region.csv
-  procesar_carreras.py           .rar del MINEDUC → matricula_carrera.csv
-  resumir_carreras.py            matricula_carrera.csv → carreras_pregrado.csv
-docs/
-  entrega.md                     documento de entrega (V1→R1→V2→R2→V3→R3→V4)
-  metodologia.md                 cómo iteramos: ramas, commits, tags, checklists
-  investigacion.md               fuentes, variables y hallazgos en los datos
-  evaluacion_usuarios/           hoja del observador (thinking aloud), una por ronda
-  evidencia/vN/                  capturas de cada versión
+index.html                         redirige a pagina/ (GitHub Pages publica la raíz)
+README.md
+
+pagina/                            ← TODO lo que carga la página web
+├── index.html
+├── css/style.css
+├── js/
+│   ├── regiones.js                vista por regiones (dot plot, slider/play, tooltip)
+│   ├── carreras.js                vista por áreas y carreras (hombres | mujeres, 2007 vs. año)
+│   └── sonido.js                  sonificación (Web Audio API)
+└── data/                          datos livianos que usa la página (los generan los scripts)
+    ├── matricula_genero_region.csv
+    ├── carreras_pregrado.csv
+    └── regiones.geojson           mapa de las 16 regiones
+
+docs/                              ← documentos del proyecto
+├── entrega.md                     documento de entrega (V1→R1→V2→R2→V3→R3→V4)
+├── metodologia.md                 cómo iteramos: ramas, commits, tags, checklists
+├── investigacion.md               fuentes, variables y hallazgos en los datos
+├── evaluacion_usuarios/           hoja del observador (thinking aloud), una por ronda
+└── evidencia/v1 … v4/             por versión: capturas, video y pagina/ (copia navegable)
+                                   ej. evidencia/v1/pagina/ = V1 revisada en la R1 (commit 0ba61f3)
+
+procesamiento/                     ← de dónde salen los datos de pagina/data/ (la web no lo usa)
+├── originales/                    País.csv, Región.csv (+ geo-chile/ y microdatos: no se suben)
+├── intermedios/                   matricula_carrera.csv (microdatos 2007–2026 agregados)
+└── scripts/
+    ├── procesar_regiones.py       Región.csv → pagina/data/matricula_genero_region.csv
+    ├── procesar_carreras.py       .rar del MINEDUC → intermedios/matricula_carrera.csv
+    ├── resumir_carreras.py        matricula_carrera.csv → pagina/data/carreras_pregrado.csv
+    └── generar_mapa_regiones.py   geo-chile/ (comunas) → pagina/data/regiones.geojson
 ```
 
 ## Cómo correrlo
 
 ```bash
-# Visualización en local (abrir http://localhost:8000)
+# Visualización en local (abrir http://localhost:8000/pagina/)
+# Ojo: abrir el index.html con doble clic NO funciona (el navegador bloquea la carga de datos)
 python3 -m http.server 8000
 
 # Regenerar datos
-python3 scripts/procesar_regiones.py
+python3 procesamiento/scripts/procesar_regiones.py
 pip install pandas unrar-cffi
-python3 scripts/procesar_carreras.py "ruta/a/sin descomprimir.zip"
-python3 scripts/resumir_carreras.py
+python3 procesamiento/scripts/procesar_carreras.py "ruta/a/sin descomprimir.zip"
+python3 procesamiento/scripts/resumir_carreras.py
+pip install shapely
+python3 procesamiento/scripts/generar_mapa_regiones.py
 ```
 
-Los microdatos originales (~500 MB por año) no se suben al repositorio; solo los archivos agregados de
-`data/processed/`.
+Los microdatos originales (~500 MB por año) y el GeoJSON por comuna no se suben al repositorio; solo
+los archivos agregados de `procesamiento/intermedios/` y `pagina/data/`.

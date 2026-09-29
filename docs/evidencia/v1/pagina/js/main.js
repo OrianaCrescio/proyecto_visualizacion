@@ -2,7 +2,7 @@
 // CONFIGURACIÓN
 // ============================================================
 
-const DATA_PATH = "data/matricula_genero_region.csv";
+const DATA_PATH = "data/processed/matricula_genero_region.csv";
 
 const INITIAL_YEAR = 1984;
 

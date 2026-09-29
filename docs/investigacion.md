@@ -4,8 +4,9 @@
 
 | Archivo | Fuente | Cobertura | Uso |
 |---|---|---|---|
-| `data/raw/País.csv`, `data/raw/Región.csv` | SIIT-BCN, con datos de matrícula MINEDUC/SIES *(verificar y citar enlace exacto)* | 1984–2025, Chile y regiones, por sexo | Vista por regiones (V1) |
-| Microdatos de matrícula (un `.rar` por año, no se suben) | Centro de Estudios MINEDUC — datosabiertos.mineduc.cl | 2007–2026, un registro por estudiante | Vista por área / carrera → `data/processed/matricula_carrera.csv` |
+| `procesamiento/originales/País.csv`, `Región.csv` | SIIT-BCN, con datos de matrícula MINEDUC/SIES *(verificar y citar enlace exacto)* | 1984–2025, Chile y regiones, por sexo | Vista por regiones (V1) |
+| `procesamiento/originales/geo-chile/` (no se sube) → `pagina/data/regiones.geojson` | BCN, mapas vectoriales (siit2.bcn.cl/mapas_vectoriales), vía repositorio "geo" en GitHub | Comunas de Chile (división pre-2018); Ñuble se arma con la provincia de Ñuble | Mapa de regiones |
+| Microdatos de matrícula (un `.rar` por año, no se suben) | Centro de Estudios MINEDUC — datosabiertos.mineduc.cl | 2007–2026, un registro por estudiante | Vista por área / carrera → `procesamiento/intermedios/matricula_carrera.csv` |
 
 ## Variables de los microdatos que usamos
 

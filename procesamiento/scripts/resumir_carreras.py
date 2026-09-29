@@ -1,21 +1,22 @@
 """
-Resume data/processed/matricula_carrera.csv a un archivo liviano para la vista de carreras.
+Resume procesamiento/intermedios/matricula_carrera.csv a un archivo liviano para la vista de carreras.
 
 Solo pregrado. Una fila por año × área del conocimiento × carrera genérica, con hombres y
 mujeres en columnas.
 
-Salida: data/processed/carreras_pregrado.csv
+Salida: pagina/data/carreras_pregrado.csv  (la carga la página)
 
 Uso (desde la raíz del repo):
-    python3 scripts/resumir_carreras.py
+    python3 procesamiento/scripts/resumir_carreras.py
 """
 from pathlib import Path
 
 import pandas as pd
 
-RAIZ = Path(__file__).resolve().parent.parent
-ENTRADA = RAIZ / "data" / "processed" / "matricula_carrera.csv"
-SALIDA = RAIZ / "data" / "processed" / "carreras_pregrado.csv"
+RAIZ = Path(__file__).resolve().parents[2]          # raíz del repo
+PROC = RAIZ / "procesamiento"
+ENTRADA = PROC / "intermedios" / "matricula_carrera.csv"
+SALIDA = RAIZ / "pagina" / "data" / "carreras_pregrado.csv"
 
 df = pd.read_csv(ENTRADA)
 df = df[(df["nivel_global"] == "Pregrado") & df["sexo"].isin(["Hombre", "Mujer"])]

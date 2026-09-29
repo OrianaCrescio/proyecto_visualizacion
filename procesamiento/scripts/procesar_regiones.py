@@ -1,12 +1,12 @@
 """
 Procesa la matrícula por región (serie 1984–2025) para la vista por regiones.
 
-Entrada : data/raw/Región.csv  (formato ancho: Unidad territorial | Variable | 1984 … 2025)
-Salida  : data/processed/matricula_genero_region.csv
+Entrada : procesamiento/originales/Región.csv  (formato ancho: Unidad territorial | Variable | 1984 … 2025)
+Salida  : pagina/data/matricula_genero_region.csv  (la carga la página)
           anio × region → hombres, mujeres, no_binario, total, prop_mujeres, diferencia_paridad
 
 Uso (desde la raíz del repo):
-    python3 scripts/procesar_regiones.py
+    python3 procesamiento/scripts/procesar_regiones.py
 """
 from pathlib import Path
 import pandas as pd
@@ -16,8 +16,10 @@ import pandas as pd
 # CONFIGURACIÓN
 # ============================================================
 
-INPUT_FILE = Path("data/raw/Región.csv")
-OUTPUT_DIR = Path("data/processed")
+RAIZ = Path(__file__).resolve().parents[2]          # raíz del repo
+PROC = RAIZ / "procesamiento"
+INPUT_FILE = PROC / "originales" / "Región.csv"
+OUTPUT_DIR = RAIZ / "pagina" / "data"
 OUTPUT_FILE = OUTPUT_DIR / "matricula_genero_region.csv"
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

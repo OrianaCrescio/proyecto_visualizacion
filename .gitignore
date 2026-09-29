@@ -1,12 +1,17 @@
 # Datos originales pesados (microdatos MINEDUC por estudiante, ~500 MB por año).
-# Se procesan con scripts/procesar_carreras.py y solo se sube el resultado agregado.
-data/raw/carreras
+# Se procesan con procesamiento/scripts/procesar_carreras.py y solo se sube el resultado agregado.
+procesamiento/originales/carreras/
+# GeoJSON por comuna (~200 MB): se procesa con procesamiento/scripts/generar_mapa_regiones.py
+procesamiento/originales/geo-chile/
 *.rar
 *.zip
 
-# Videos pesados de evidencia: subirlos a YouTube y enlazarlos en docs/entrega.md
+# Videos: fuera de docs/evidencia/ no se suben. Dentro sí, para que todo el grupo los vea
+# (ojo: GitHub rechaza archivos de más de 100 MB; el video largo va a YouTube).
 *.mov
 *.mp4
+!docs/evidencia/**/*.mov
+!docs/evidencia/**/*.mp4
 
 # Sistema / editores
 .DS_Store

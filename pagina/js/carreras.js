@@ -12,7 +12,7 @@
 
 const Carreras = (() => {
 
-    const DATA_PATH = "data/processed/carreras_pregrado.csv";
+    const DATA_PATH = "data/carreras_pregrado.csv";
     const ANIO_BASE = 2007;
     const TOP_CARRERAS = 15;
 
