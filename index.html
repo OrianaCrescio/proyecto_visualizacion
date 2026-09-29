@@ -46,6 +46,20 @@
                 <span>2025</span>
             </div>
 
+            <div class="sound-container">
+                <button id="sound-button" type="button">
+                    🔈 Activar sonido
+                </button>
+
+                <p class="sound-legend">
+                    La nota de fondo marca la <strong>paridad (50 %)</strong>.
+                    Cada año suena una nota según el % de mujeres en Chile:
+                    más grave = menos mujeres, más aguda = más mujeres
+                    (1 punto porcentual = 1 semitono).
+                    Pasa el cursor por una región para escuchar la suya.
+                </p>
+            </div>
+
             <div id="chart"></div>
         </section>
     </main>
@@ -55,6 +69,7 @@
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 
     <!-- Nuestro código -->
+    <script src="js/sonido.js"></script>
     <script src="js/main.js"></script>
 
 </body>

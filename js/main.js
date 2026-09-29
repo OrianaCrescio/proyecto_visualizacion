@@ -94,6 +94,13 @@ d3.csv(DATA_PATH)
 
         initializeSlider();
 
+
+        // ----------------------------------------------------
+        // Activar botón de sonido
+        // ----------------------------------------------------
+
+        initializeSoundButton();
+
     })
 
     .catch(error => {
@@ -308,7 +315,7 @@ function initializeVisualization() {
         )
 
         .text(
-            region => region
+            region => nombreCorto(region)
         );
 
 
@@ -357,7 +364,10 @@ function initializeVisualization() {
         .append("circle")
         .attr("class", "chile-point")
         .attr("cy", chileY)
-        .attr("r", 8);
+        .attr("r", 8)
+        .on("mouseenter", mostrarDetalle)
+        .on("mousemove", moverTooltip)
+        .on("mouseleave", ocultarTooltip);
 
 }
 
@@ -449,7 +459,12 @@ function updateYear(year) {
                 + yScale.bandwidth() / 2
         )
 
-        .attr("r", 6);
+        .attr("r", 6)
+
+        // Details on demand: tooltip + nota de la región
+        .on("mouseenter", mostrarDetalle)
+        .on("mousemove", moverTooltip)
+        .on("mouseleave", ocultarTooltip);
 
 
     // --------------------------------------------------------
@@ -533,6 +548,14 @@ function updateYear(year) {
                 "cx",
                 xScale(chile.prop_mujeres)
             );
+
+        // Guardamos el dato para el tooltip del punto nacional
+        svg
+            .select(".chile-point")
+            .datum(chile);
+
+        // Sonificación: nota del país para este año
+        Sonido.tocar(chile.prop_mujeres);
 
     } else {
 
@@ -688,4 +711,99 @@ function pauseAnimation() {
     d3
         .select("#play-button")
         .text("▶ Play");
+}
+
+// ============================================================
+// TOOLTIP (details on demand)
+// ============================================================
+
+const tooltip = d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// Formato chileno: 1.534 y 54,8 %
+const localeCL = d3.formatLocale({
+    decimal: ",",
+    thousands: ".",
+    grouping: [3],
+    currency: ["$", ""],
+    percent: " %"
+});
+
+const formatoMiles = localeCL.format(",");
+const formatoPct = localeCL.format(".1%");
+
+
+// "Región De Aysén Del Gral. Carlos..." → "Aysén"-style nombres cortos
+// para que las etiquetas no se corten a la izquierda del gráfico.
+function nombreCorto(region) {
+    return region
+        .replace(/^Región (De|Del|de|del) /, "")
+        .replace("Aysén Del Gral. Carlos Ibáñez Del Campo", "Aysén")
+        .replace("Magallanes Y De La Antártica Chilena", "Magallanes")
+        .replace("Libertador Gral. Bernardo O'higgins", "O'Higgins")
+        .replace(/^Región Metropolitana De Santiago$/, "Metropolitana")
+        .replace("Metropolitana De Santiago", "Metropolitana")
+        .replace(" Y ", " y ")
+        .replace(/^La /, "La ")
+        .replace(/^Los /, "Los ");
+}
+
+
+function mostrarDetalle(event, d) {
+
+    if (!d) return;
+
+    tooltip
+        .style("opacity", 1)
+        .html(`
+            <strong>${d.region}</strong> · ${d.anio}<br>
+            Mujeres: <strong>${formatoPct(d.prop_mujeres)}</strong><br>
+            ${formatoMiles(d.mujeres)} mujeres · ${formatoMiles(d.hombres)} hombres
+        `);
+
+    moverTooltip(event);
+
+    // La misma regla de sonido que el país: se compara con la nota de paridad
+    Sonido.tocar(d.prop_mujeres, { volumen: 0.18, duracion: 0.35 });
+}
+
+
+function moverTooltip(event) {
+
+    tooltip
+        .style("left", `${event.pageX + 14}px`)
+        .style("top", `${event.pageY - 10}px`);
+}
+
+
+function ocultarTooltip() {
+
+    tooltip.style("opacity", 0);
+}
+
+
+// ============================================================
+// BOTÓN DE SONIDO
+// ============================================================
+
+function initializeSoundButton() {
+
+    const boton = d3.select("#sound-button");
+
+    boton.on("click", function () {
+
+        const activo = Sonido.alternar();
+
+        boton
+            .text(activo ? "🔊 Sonido activado" : "🔈 Activar sonido")
+            .classed("activo", activo);
+
+        // Al activar, suena el año actual para escuchar la referencia
+        if (activo) {
+            updateYear(+d3.select("#year-slider").property("value"));
+        }
+    });
 }

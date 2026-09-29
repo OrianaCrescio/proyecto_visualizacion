@@ -137,3 +137,62 @@ h1 {
     font-weight: bold;
     fill: #111;
 }
+
+/* -------------------------
+   Sonido
+-------------------------- */
+
+.sound-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+#sound-button,
+#play-button {
+    cursor: pointer;
+    border: 1px solid #bbb;
+    background-color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+#sound-button.activo {
+    background-color: #222;
+    border-color: #222;
+    color: white;
+}
+
+.sound-legend {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #666;
+    max-width: 700px;
+}
+
+
+/* -------------------------
+   Tooltip
+-------------------------- */
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.15s;
+}
+
+.region-point,
+.chile-point {
+    cursor: pointer;
+}
