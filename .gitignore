@@ -1,2 +1,15 @@
-# Datos originales pesados
-data/raw/
+# Datos originales pesados (microdatos MINEDUC por estudiante, ~500 MB por año).
+# Se procesan con scripts/procesar_carreras.py y solo se sube el resultado agregado.
+data/raw/carreras
+*.rar
+*.zip
+
+# Videos pesados de evidencia: subirlos a YouTube y enlazarlos en docs/entrega.md
+*.mov
+*.mp4
+
+# Sistema / editores
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+.vscode/
