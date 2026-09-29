@@ -1,5 +1,6 @@
 # proyecto_visualizacion
 
+Para acceder a la visualización en la web: https://orianacrescio.github.io/proyecto_visualizacion/
 Matrícula en Educación Superior en Chile por sexo, carrera y área del conocimiento (2007-2026) 
 
  
