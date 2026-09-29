@@ -196,3 +196,109 @@ h1 {
 .chile-point {
     cursor: pointer;
 }
+
+
+/* -------------------------
+   Vista por áreas y carreras
+-------------------------- */
+
+#carreras {
+    margin-top: 80px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.chart-box {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.leyenda span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.leyenda .cuadro {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.leyenda .linea-paridad {
+    width: 0;
+    height: 14px;
+    border-left: 1.5px dashed #999;
+    display: inline-block;
+}
+
+.leyenda .linea-base {
+    width: 0;
+    height: 14px;
+    border-left: 2px solid #111;
+    display: inline-block;
+}
+
+.leyenda-total {
+    color: #777;
+}
+
+.leyenda-eje {
+    font-size: 12px;
+    fill: #777;
+}
+
+.fila .valor {
+    font-size: 12px;
+    font-weight: bold;
+    fill: white;
+    pointer-events: none;
+}
+
+.fila .total {
+    font-size: 12px;
+    fill: #777;
+}
+
+.fila .marca-base {
+    stroke: #111;
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.fila.clickable {
+    cursor: pointer;
+}
+
+.fila.clickable:hover .nombre,
+.fila.abierta .nombre {
+    font-weight: bold;
+    fill: #111;
+}
+
+.fuente {
+    font-size: 12px;
+    color: #888;
+}

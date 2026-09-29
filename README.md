@@ -23,15 +23,18 @@ Queremos mostrar no solo que las mujeres ya son mayoría en la matrícula de edu
 
 ```
 index.html, css/, js/            visualización (raíz de GitHub Pages)
-  js/main.js                     gráfico, slider/play y tooltip (D3)
+  js/main.js                     vista por regiones: gráfico, slider/play y tooltip (D3)
+  js/carreras.js                 vista por áreas y carreras (hombres | mujeres, 2007 vs. año elegido)
   js/sonido.js                   sonificación (Web Audio API)
 data/raw/                        País.csv y Región.csv (serie 1984–2025)
 data/processed/
   matricula_genero_region.csv    % de mujeres por región y año → la usa la viz
   matricula_carrera.csv          microdatos 2007–2026 agregados por área/carrera y sexo
+  carreras_pregrado.csv          resumen liviano (pregrado) → lo usa la vista de carreras
 scripts/
   procesar_regiones.py           data/raw/Región.csv → matricula_genero_region.csv
   procesar_carreras.py           .rar del MINEDUC → matricula_carrera.csv
+  resumir_carreras.py            matricula_carrera.csv → carreras_pregrado.csv
 docs/
   entrega.md                     documento de entrega (V1→R1→V2→R2→V3→R3→V4)
   metodologia.md                 cómo iteramos: ramas, commits, tags, checklists
@@ -50,6 +53,7 @@ python3 -m http.server 8000
 python3 scripts/procesar_regiones.py
 pip install pandas unrar-cffi
 python3 scripts/procesar_carreras.py "ruta/a/sin descomprimir.zip"
+python3 scripts/resumir_carreras.py
 ```
 
 Los microdatos originales (~500 MB por año) no se suben al repositorio; solo los archivos agregados de

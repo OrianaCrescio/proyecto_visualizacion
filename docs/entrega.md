@@ -9,10 +9,11 @@
 
 ## 1. Portada
 
-- **Grupo:** N° __
+- **Grupo:** N°1
 - **Integrantes:** Antonia Ramos · Oriana Crescio · Florencia Godoy
 - **GitHub Pages:** https://orianacrescio.github.io/proyecto_visualizacion/
 - **Repositorio:** https://github.com/OrianaCrescio/proyecto_visualizacion
+- **One drive** https://uccl0-my.sharepoint.com/:f:/r/personal/antonia_ramos_uc_cl/Documents/InfoVis?d=w5e1430c7df5c4d24932cc2f25ed17efd&csf=1&web=1&e=zBr1ej
 - **Video:** _pendiente_
 
 ---
@@ -46,7 +47,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 
 | Campo | |
 |---|---|
-| **Versión / fecha** | V1 · __/__/2026 |
+| **Versión / fecha** | V1 · 28/09/2026 |
 | **Commit / tag** | `v1` · [enlace]() |
 | **Evidencia** | ![V1](evidencia/v1/captura.png) · [video V1]() |
 
@@ -73,17 +74,23 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 ---
 
 ## 4. R1 — Revisión con el equipo docente
-> Máx. 10 líneas. Llegar con la V1 funcionando y 2–3 preguntas de diseño concretas.
+> Máx. 10 líneas. Revisar y ajustar con las palabras del grupo antes de entregar.
 
-- **Fecha:**
-- **Preguntas que llevamos:** *sugerencias:* (1) en 2025 todas las regiones están entre 52 % y 57 %: con
-  el eje 0–100 % casi no se distinguen — ¿mantener el eje completo o hacer zoom? (2) El mensaje real está
-  en las áreas (Tecnología 21 % vs. Salud 75 %): ¿las áreas reemplazan a las regiones o se suman como
-  segundo nivel? (3) ¿Se entiende el sonido sin leer la leyenda?
-- **Qué se discutió (síntesis):**
-- **Qué adoptamos y por qué:**
-- **Qué descartamos y por qué:**
-- **Cómo se ve en V2:**
+- **Fecha:** 29/09/2026 · con el equipo docente, sobre la V1 publicada en GitHub Pages.
+- **Qué se discutió:** (1) el sonido no permite saber qué es "más" o "menos": comparar contra una nota
+  fija de 220 Hz exige oído absoluto, y no distingue a mujeres de hombres; (2) la V1 solo muestra el %
+  de mujeres, así que la relación con los hombres queda implícita; (3) conviene evaluar varias
+  alternativas visuales para esa comparación, y la página puede tener más de un gráfico.
+- **Qué adoptamos y por qué:** timbre distinto para mujeres y para hombres, de modo que se comparen dos
+  voces entre sí en vez de una contra una referencia abstracta; hacer explícita la comparación
+  hombres/mujeres en lo visual; pasar a varios gráficos que cuenten una sola historia (evolución
+  nacional → regiones → carreras), sumando los datos por carrera que ya teníamos y que son el centro
+  del mensaje; mostrar explícitamente el antes y el ahora (primer año vs. último).
+- **Qué descartamos o dejamos en evaluación y por qué:** mapa de regiones con color que cambia por año:
+  en evaluación — muestra bien el cambio temporal (en 1984, 10 de 12 regiones estaban bajo 50 %; hoy
+  todas están sobre), pero en el año actual las regiones varían poco (52–57 %) y el tamaño de cada
+  región pesa más a la vista que su matrícula.
+- **Cómo se ve en V2:** _completar al cerrar la V2._
 
 ---
 
@@ -95,11 +102,24 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 | **Commit / tag** | `v2` · [enlace]() |
 | **Evidencia** | ![V2](evidencia/v2/captura.png) · [video V2]() |
 
-**Qué cambió respecto a V1** (máx. 8 líneas)
--
+**Qué cambió respecto a V1** (máx. 8 líneas) — *borrador, en progreso*
+- Nueva sección "Son mayoría, pero no en todas las áreas": matrícula de pregrado 2007–2026 por área del
+  conocimiento, cada área como una barra al 100 % con hombres desde la izquierda y mujeres desde la derecha.
+- Marca negra con la división de 2007 en cada barra (antes vs. año elegido) + slider de año.
+- Clic en un área → sus 15 carreras con más matrícula, con la misma codificación (details on demand).
+- Tooltip con % y conteos de ambos sexos y el cambio en puntos desde 2007.
+- _Pendiente:_ sonido con dos timbres (hombres / mujeres), vista de evolución nacional, ¿mapa?
 
-**Por qué — rationale** (máx. 12 líneas)
--
+**Por qué — rationale** (máx. 12 líneas) — *borrador*
+- R1: la comparación con los hombres tiene que ser visible, no deducida → dos segmentos con dos colores
+  y el % de cada grupo escrito en su segmento.
+- Barras alineadas en los extremos: ambos grupos se leen como longitud desde una línea base común
+  (posición > color / área, Cleveland & McGill).
+- R1 y nuestra propia idea: comparar el inicio con hoy → la marca de 2007 en vez de un segundo gráfico.
+- Evidencia de los datos: el mensaje (Tecnología 18 % → 21 % de mujeres en 20 años; Salud y Educación
+  ~75 %) está en las áreas, no en las regiones, que hoy varían solo entre 52 % y 57 %.
+- Orden fijo de las áreas (según el último año) para no perder la referencia al mover el slider.
+- Colores azul/naranja validados para daltonismo; se evitó el rosado/celeste por estereotipo.
 
 **Qué se descartó** (máx. 5 líneas)
 -
