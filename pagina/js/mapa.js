@@ -37,7 +37,12 @@ const Mapa = (() => {
     const svg = d3.select("#mapa")
         .append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("width", "100%");
+        .attr("width", "100%")
+        // Tope de tamaño aunque el CSS no cargue: nunca más alto que 650 px ni que 3/4 de la pantalla
+        .style("display", "block")
+        .style("max-width", `${width}px`)
+        .style("max-height", "min(650px, 75vh)")   // cabe completo en pantallas bajas
+        .style("margin", "0 auto");
 
 
     // --------------------------------------------------------
