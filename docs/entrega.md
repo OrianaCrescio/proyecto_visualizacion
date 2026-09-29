@@ -14,7 +14,7 @@
 - **GitHub Pages:** https://orianacrescio.github.io/proyecto_visualizacion/
 - **Repositorio:** https://github.com/OrianaCrescio/proyecto_visualizacion
 - **One drive** https://uccl0-my.sharepoint.com/:f:/r/personal/antonia_ramos_uc_cl/Documents/InfoVis?d=w5e1430c7df5c4d24932cc2f25ed17efd&csf=1&web=1&e=zBr1ej
-- **Video:** _pendiente_
+- **Video final:** _pendiente_
 
 ---
 
@@ -98,9 +98,9 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 
 | Campo | |
 |---|---|
-| **Versión / fecha** | V2 · __/__/2026 |
+| **Versión / fecha** | V2 · 29/09/2026 |
 | **Commit / tag** | `v2` · [enlace]() |
-| **Evidencia** | ![V2](evidencia/v2/captura.png) · [video V2]() |
+| **Evidencia** | ![V2](evidencia/v2/fotos) · [video V2]() |
 
 **Qué cambió respecto a V1** (máx. 8 líneas) — *borrador, en progreso*
 - Nueva sección "Son mayoría, pero no en todas las áreas": matrícula de pregrado 2007–2026 por área del
@@ -143,7 +143,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 |---|---|
 | **Versión / fecha** | V3 · __/__/2026 |
 | **Commit / tag** | `v3` · [enlace]() |
-| **Evidencia** | ![V3](evidencia/v3/captura.png) · [video V3]() |
+| **Evidencia** | ![V3](evidencia/v3/fotos) · [video V3]() |
 
 **Qué cambió respecto a V2** (máx. 8 líneas)
 -
@@ -173,7 +173,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 |---|---|
 | **Versión / fecha** | V4 · __/__/2026 |
 | **Commit / tag** | `v4` · [enlace]() |
-| **Evidencia** | ![V4](evidencia/v4/captura.png) · [video V4]() |
+| **Evidencia** | ![V4](evidencia/v4/fotos) · [video V4]() |
 
 **Qué cambió respecto a V3** (máx. 8 líneas)
 -

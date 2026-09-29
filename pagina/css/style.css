@@ -302,3 +302,52 @@ h3 {
     font-size: 12px;
     color: #888;
 }
+
+
+/* -------------------------
+   Mapa + gráfico de puntos
+-------------------------- */
+
+.regiones-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.mapa-box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.region-mapa {
+    stroke: white;
+    stroke-width: 0.6;
+    cursor: pointer;
+}
+
+.region-mapa.activa {
+    stroke: #111;
+    stroke-width: 1.5;
+}
+
+.leyenda-mapa text {
+    font-size: 10px;
+    fill: #666;
+}
+
+.region-point.destacado {
+    fill: #111;
+}
+
+@media (max-width: 800px) {
+    .regiones-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-box {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+}
