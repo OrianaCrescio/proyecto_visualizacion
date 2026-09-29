@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    color: #222;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 30px;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    max-width: 700px;
+    line-height: 1.5;
+}
+
+
+/* -------------------------
+   Año
+-------------------------- */
+
+.year-container {
+    margin-bottom: 25px;
+}
+
+.year-container span {
+    color: #777;
+    margin-right: 8px;
+}
+
+#year {
+    font-size: 32px;
+}
+
+
+/* -------------------------
+   Visualización
+-------------------------- */
+
+#chart {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.region-label {
+    font-size: 13px;
+    fill: #444;
+}
+
+.region-line {
+    stroke: #dddddd;
+    stroke-width: 1;
+}
+
+.region-point {
+    fill: #555;
+}
+
+.chile-point {
+    fill: #111;
+}
+
+.parity-line {
+    stroke: #999;
+    stroke-width: 1.5;
+    stroke-dasharray: 5 5;
+}
+
+.parity-label {
+    font-size: 12px;
+    fill: #777;
+}
+
+.axis text {
+    font-size: 12px;
+}
+
+.axis path,
+.axis line {
+    stroke: #bbb;
+}
+
+/* -------------------------
+   Slider temporal
+-------------------------- */
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+    font-size: 13px;
+    color: #666;
+}
+
+#year-slider {
+    flex: 1;
+    cursor: pointer;
+}
+
+#year-slider::-webkit-slider-thumb {
+    cursor: pointer;
+}
+
+#year-slider::-moz-range-thumb {
+    cursor: pointer;
+}
+
+.chile-line {
+    stroke: #555;
+    stroke-width: 2;
+}
+
+.chile-label {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #111;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matrícula en Educación Superior en Chile</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
+
+            <p class="subtitle">
+                Evolución de la proporción de mujeres matriculadas
+                en las regiones de Chile.
+            </p>
+        </header>
+
+        <section id="visualizacion">
+            <div class="year-container">
+                <span>Año</span>
+                <strong id="year">1984</strong>
+            </div>
+
+            <div class="slider-container">
+                <span>1984</span>
+
+                <button id="play-button" type="button">
+                    ▶ Play
+                </button>
+
+                <input
+                    type="range"
+                    id="year-slider"
+                    min="1984"
+                    max="2025"
+                    value="1984"
+                    step="1"
+                >
+
+                <span>2025</span>
+            </div>
+
+            <div id="chart"></div>
+        </section>
+    </main>
+
+
+    <!-- D3 -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Nuestro código -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
