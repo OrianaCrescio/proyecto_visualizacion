@@ -33,7 +33,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 > Máx. 8 líneas.
 
 *Borrador:*
-- Serie por región 1984–2025 (SIIT-BCN, con datos MINEDUC/SIES — *verificar*): se pasa de formato ancho
+- Serie por región 1984–2025 (BCN, SIIT – Estadísticas territoriales): se pasa de formato ancho
   a largo y se calcula la proporción de mujeres y la distancia a la paridad (`procesamiento/scripts/procesar_regiones.py`).
 - Microdatos de matrícula 2007–2026 (Centro de Estudios MINEDUC, ~1,5 M registros por año): se agregan a
   conteos por año × nivel × tipo de institución × área × carrera genérica × sexo
