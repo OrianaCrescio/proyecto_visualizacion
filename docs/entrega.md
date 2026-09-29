@@ -49,7 +49,7 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 |---|---|
 | **Versión / fecha** | V1 · 28/09/2026 |
 | **Commit / tag** | `v1` (commit `0ba61f3`) · [enlace]() · [copia navegable](evidencia/v1/pagina/) |
-| **Evidencia** | ![V1](evidencia/v1/captura.png) · [video V1]() |
+| **Evidencia** | ![V1](evidencia/v1/fotos) · [video V1]() |
 
 **Qué cambió** (en V1: decisiones iniciales · máx. 8 líneas) — *borrador*
 - Mensaje: cómo cambió la participación de las mujeres en la educación superior, por región.
