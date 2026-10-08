@@ -71,13 +71,13 @@ const Carreras = (() => {
             svg.append("g").attr("class", "axis eje-x");
 
             svg.append("text")
-                .attr("class", "leyenda-eje")
+                .attr("class", "leyenda-eje hombres")
                 .attr("x", x(0))
                 .attr("y", 12)
                 .text("← hombres");
 
             svg.append("text")
-                .attr("class", "leyenda-eje")
+                .attr("class", "leyenda-eje mujeres")
                 .attr("x", x(1))
                 .attr("y", 12)
                 .attr("text-anchor", "end")
@@ -193,8 +193,9 @@ const Carreras = (() => {
             .attr("dominant-baseline", "middle")
             .text(d => fmtMiles(d.actual.total));
 
-        // Tooltip
+        // Tooltip y sonificación proporcional a la matrícula de la fila
         g.on("mouseenter", (event, d) => {
+                Sonido.tocar(d.actual.hombres, d.actual.mujeres);
                 const cambio = d.base
                     ? (d.actual.propMujeres - d.base.propMujeres) * 100
                     : null;
@@ -208,10 +209,14 @@ const Carreras = (() => {
                 moverTooltip(event);
             })
             .on("mousemove", moverTooltip)
-            .on("mouseleave", ocultarTooltip);
+            .on("mouseleave", () => {
+                ocultarTooltip();
+                Sonido.detener();
+            });
 
         if (clickable) {
             g.on("click", (event, d) => {
+                Sonido.detener();
                 areaAbierta = areaAbierta === d.nombre ? null : d.nombre;
                 actualizar();
             });
@@ -240,17 +245,19 @@ const Carreras = (() => {
             base: porArea.get(ANIO_BASE).get(nombre) || null
         }));
 
-        dibujar(d3.select("#chart-areas"), filasAreas, { clickable: true });
-
         // Carreras del área abierta
         const panel = d3.select("#detalle-carreras");
+        const areas = d3.select("#chart-areas");
 
         if (!areaAbierta) {
-            panel.style("display", "none");
+            panel.property("hidden", true);
+            areas.property("hidden", false);
+            dibujar(areas, filasAreas, { clickable: true });
             return;
         }
 
-        panel.style("display", null);
+        areas.property("hidden", true);
+        panel.property("hidden", false);
         d3.select("#titulo-detalle").text(
             `${areaAbierta}: las ${TOP_CARRERAS} carreras con más matrícula en ${anioActual}`
         );
@@ -275,6 +282,24 @@ const Carreras = (() => {
         d3.select("#chart-carreras").select("svg").remove();   // la lista cambia entera
         dibujar(d3.select("#chart-carreras"), filasCarreras);
     }
+
+
+    d3.select("#volver-areas").on("click", () => {
+        areaAbierta = null;
+        actualizar();
+
+        const areas = document.querySelector("#chart-areas");
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const animacion = areas.animate(
+            [
+                { opacity: 0, transform: "translateY(12px)" },
+                { opacity: 1, transform: "translateY(0)" }
+            ],
+            { duration: 280, easing: "ease-out" }
+        );
+        animacion.finished.then(() => animacion.cancel());
+    });
 
 
     // --------------------------------------------------------

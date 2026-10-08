@@ -2,11 +2,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-hombres: #2a78d6;
+    --color-mujeres: #eb6834;
+    --color-texto: #222;
+    --color-secundario: #666;
+    --color-borde: #e5e5e5;
+    --color-fondo: #f7f7f7;
+    --color-superficie: #fff;
+    --radio-tarjeta: 8px;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f7f7f7;
-    color: #222;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
 }
 
 main {
@@ -20,15 +31,61 @@ header {
 }
 
 h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 10px;
 }
 
 .subtitle {
-    font-size: 18px;
-    color: #666;
+    font-size: 16px;
+    color: var(--color-secundario);
     max-width: 700px;
     line-height: 1.5;
+}
+
+.seccion-header {
+    margin-bottom: 28px;
+}
+
+.seccion-header h2 {
+    margin-top: 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 28px;
+}
+
+.tab-button {
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: var(--color-secundario);
+    font: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 18px;
+}
+
+.tab-button:hover {
+    color: var(--color-texto);
+}
+
+.tab-button[aria-selected="true"] {
+    color: var(--color-texto);
+    border-bottom-color: var(--color-hombres);
+}
+
+.tab-button:focus-visible {
+    outline: 2px solid var(--color-hombres);
+    outline-offset: -2px;
+}
+
+.tab-panel[hidden] {
+    display: none !important;
 }
 
 
@@ -37,18 +94,20 @@ h1 {
 -------------------------- */
 
 .year-container {
-    margin-bottom: 25px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 .year-container span {
-    color: #777;
-    margin-right: 8px;
+    color: var(--color-secundario);
 }
 
-#year {
-    font-size: 32px;
+.year-container strong {
+    font-size: 30px;
+    line-height: 1;
 }
-
 
 /* -------------------------
    Visualización
@@ -56,19 +115,41 @@ h1 {
 
 #chart {
     width: 100%;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
 }
 
 .region-label {
-    font-size: 13px;
+    font-size: 12px;
     fill: #444;
 }
 
 .region-line {
     stroke: #dddddd;
     stroke-width: 1;
+}
+
+.regiones-layout {
+    position: relative;
+}
+
+.region-links {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.region-link {
+    fill: none;
+    stroke: #8c9aaa;
+    stroke-width: 1;
+    stroke-opacity: 0.38;
+}
+
+.region-link.activo {
+    stroke: #444;
+    stroke-width: 2.5;
+    stroke-opacity: 1;
 }
 
 .region-point {
@@ -91,7 +172,8 @@ h1 {
 }
 
 .axis text {
-    font-size: 12px;
+    font-size: 11px;
+    fill: var(--color-secundario);
 }
 
 .axis path,
@@ -108,10 +190,15 @@ h1 {
     align-items: center;
     gap: 15px;
 
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 
     font-size: 13px;
-    color: #666;
+    color: var(--color-secundario);
+}
+
+#year-slider,
+#slider-carreras {
+    accent-color: var(--color-hombres);
 }
 
 #year-slider {
@@ -146,23 +233,29 @@ h1 {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 #sound-button,
 #play-button {
     cursor: pointer;
-    border: 1px solid #bbb;
-    background-color: white;
+    border: 1px solid #d5d5d5;
+    background-color: var(--color-superficie);
     border-radius: 6px;
-    padding: 6px 12px;
+    padding: 8px 12px;
     font-size: 13px;
     white-space: nowrap;
+    color: var(--color-texto);
+}
+
+#sound-button:hover,
+#play-button:hover {
+    border-color: var(--color-hombres);
 }
 
 #sound-button.activo {
-    background-color: #222;
-    border-color: #222;
+    background-color: var(--color-hombres);
+    border-color: var(--color-hombres);
     color: white;
 }
 
@@ -170,7 +263,7 @@ h1 {
     margin: 0;
     font-size: 13px;
     line-height: 1.4;
-    color: #666;
+    color: var(--color-secundario);
     max-width: 700px;
 }
 
@@ -181,12 +274,13 @@ h1 {
 
 .tooltip {
     position: absolute;
+    z-index: 10;
     pointer-events: none;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
     border-radius: 6px;
     padding: 8px 10px;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.4;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     transition: opacity 0.15s;
@@ -203,25 +297,64 @@ h1 {
 -------------------------- */
 
 #carreras {
-    margin-top: 80px;
+    margin-top: 0;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1.25;
     margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 0 10px;
 }
 
+#chart,
 .chart-box {
     width: 100%;
-    background-color: white;
-    border-radius: 8px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjeta);
     padding: 20px;
     margin-bottom: 20px;
+}
+
+.chart-box[hidden] {
+    display: none !important;
+}
+
+#chart {
+    margin-bottom: 0;
+}
+
+.detalle-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.detalle-header h3 {
+    margin: 0;
+}
+
+#volver-areas {
+    flex: 0 0 auto;
+    cursor: pointer;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 13px;
+}
+
+#volver-areas:hover {
+    border-color: var(--color-hombres);
 }
 
 .leyenda {
@@ -247,6 +380,14 @@ h3 {
     display: inline-block;
 }
 
+.leyenda .cuadro.hombres {
+    background-color: var(--color-hombres);
+}
+
+.leyenda .cuadro.mujeres {
+    background-color: var(--color-mujeres);
+}
+
 .leyenda .linea-paridad {
     width: 0;
     height: 14px;
@@ -262,12 +403,20 @@ h3 {
 }
 
 .leyenda-total {
-    color: #777;
+    color: var(--color-secundario);
 }
 
 .leyenda-eje {
     font-size: 12px;
-    fill: #777;
+    font-weight: 600;
+}
+
+.leyenda-eje.hombres {
+    fill: var(--color-hombres);
+}
+
+.leyenda-eje.mujeres {
+    fill: var(--color-mujeres);
 }
 
 .fila .valor {
@@ -316,8 +465,9 @@ h3 {
 }
 
 .mapa-box {
-    background-color: white;
-    border-radius: 8px;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjeta);
     padding: 10px;
 }
 
@@ -334,7 +484,7 @@ h3 {
 
 .leyenda-mapa text {
     font-size: 10px;
-    fill: #666;
+    fill: var(--color-secundario);
 }
 
 .region-point.destacado {
@@ -342,6 +492,14 @@ h3 {
 }
 
 @media (max-width: 800px) {
+    main {
+        padding: 32px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
     .regiones-layout {
         grid-template-columns: 1fr;
     }
@@ -349,5 +507,19 @@ h3 {
     .mapa-box {
         max-width: 280px;
         margin: 0 auto;
+    }
+
+    .sound-container {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .slider-container {
+        gap: 10px;
+    }
+
+    .chart-box,
+    #chart {
+        padding: 14px;
     }
 }

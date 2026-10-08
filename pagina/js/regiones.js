@@ -47,8 +47,11 @@ const svg = d3
 // CARGAR DATOS
 // ============================================================
 
-d3.csv(DATA_PATH)
-    .then(data => {
+Promise.all([
+    d3.csv(DATA_PATH),
+    d3.json("data/regiones.geojson")
+])
+    .then(([data, geo]) => {
 
         // ----------------------------------------------------
         // Convertir valores numéricos
@@ -78,7 +81,14 @@ d3.csv(DATA_PATH)
         // Crear estructura
         // ----------------------------------------------------
 
-        initializeVisualization();
+        const proyeccionMapa = d3.geoMercator()
+            .fitExtent([[10, 10], [250, 580]], geo);
+        const rutaMapa = d3.geoPath(proyeccionMapa);
+        const ordenMapa = geo.features
+            .slice()
+            .sort((a, b) => rutaMapa.centroid(a)[1] - rutaMapa.centroid(b)[1])
+            .map(feature => feature.properties.region);
+        initializeVisualization(ordenMapa);
 
 
         // ----------------------------------------------------
@@ -94,12 +104,6 @@ d3.csv(DATA_PATH)
 
         initializeSlider();
 
-
-        // ----------------------------------------------------
-        // Activar botón de sonido
-        // ----------------------------------------------------
-
-        initializeSoundButton();
 
     })
 
@@ -132,7 +136,7 @@ function hasValidData(d) {
 // INICIALIZAR VISUALIZACIÓN
 // ============================================================
 
-function initializeVisualization() {
+function initializeVisualization(ordenMapa) {
 
     // ========================================================
     // OBTENER TODAS LAS REGIONES
@@ -141,12 +145,17 @@ function initializeVisualization() {
     // No usamos solamente 1984 porque algunas regiones
     // aparecen más adelante en la serie histórica.
 
-    const nombresRegiones = Array.from(
+    const nombresDatos = Array.from(
         new Set(
             allData
                 .filter(d => d.region !== "Chile")
                 .map(d => d.region)
         )
+    );
+    const posicionesMapa = new Map(ordenMapa.map((region, index) => [region, index]));
+    const nombresRegiones = nombresDatos.sort((a, b) =>
+        (posicionesMapa.get(a) ?? Number.MAX_SAFE_INTEGER)
+        - (posicionesMapa.get(b) ?? Number.MAX_SAFE_INTEGER)
     );
 
 
@@ -219,6 +228,18 @@ function initializeVisualization() {
         )
         .call(xAxis);
 
+    svg.append("text")
+        .attr("class", "leyenda-eje hombres")
+        .attr("x", xScale(0))
+        .attr("y", 12)
+        .text("← hombres");
+
+    svg.append("text")
+        .attr("class", "leyenda-eje mujeres")
+        .attr("x", xScale(1))
+        .attr("y", 12)
+        .attr("text-anchor", "end")
+        .text("mujeres →");
 
     // ========================================================
     // LÍNEA DE PARIDAD
@@ -232,50 +253,21 @@ function initializeVisualization() {
         .attr("y1", margin.top - 10)
         .attr("y2", height - margin.bottom);
 
+    svg
+        .selectAll(".region-line")
+        .data(nombresRegiones, d => d)
+        .join("line")
+        .attr("class", "region-line")
+        .attr("x1", xScale(xMin))
+        .attr("x2", xScale(xMax))
+        .attr("y1", region => yScale(region) + yScale.bandwidth() / 2)
+        .attr("y2", region => yScale(region) + yScale.bandwidth() / 2);
+
 
     // Por ahora quitamos el texto "Paridad 50%"
     // porque el eje ya muestra claramente el 50%.
     //
     // Esto también evita que se superponga con el tick.
-
-
-    // ========================================================
-    // LÍNEAS HORIZONTALES
-    // ========================================================
-
-    svg
-        .selectAll(".region-line")
-        .data(
-            nombresRegiones,
-            d => d
-        )
-        .join("line")
-
-        .attr("class", "region-line")
-
-        .attr(
-            "x1",
-            xScale(xMin)
-        )
-
-        .attr(
-            "x2",
-            xScale(xMax)
-        )
-
-        .attr(
-            "y1",
-            region =>
-                yScale(region)
-                + yScale.bandwidth() / 2
-        )
-
-        .attr(
-            "y2",
-            region =>
-                yScale(region)
-                + yScale.bandwidth() / 2
-        );
 
 
     // ========================================================
@@ -317,6 +309,8 @@ function initializeVisualization() {
         .text(
             region => nombreCorto(region)
         );
+
+    requestAnimationFrame(actualizarEnlacesRegiones);
 
 
     // ========================================================
@@ -365,9 +359,12 @@ function initializeVisualization() {
         .attr("class", "chile-point")
         .attr("cy", chileY)
         .attr("r", 8)
-        .on("mouseenter", mostrarDetalle)
+        .on("mouseenter", (event, d) => mostrarDetalle(event, d, false))
         .on("mousemove", moverTooltip)
-        .on("mouseleave", ocultarTooltip);
+        .on("mouseleave", () => {
+            ocultarTooltip();
+            Sonido.detener();
+        });
 
 }
 
@@ -425,7 +422,6 @@ function updateYear(year) {
         .select("#year")
         .text(year);
 
-
     // ========================================================
     // ACTUALIZAR PUNTOS REGIONALES
     // ========================================================
@@ -470,10 +466,13 @@ function updateYear(year) {
 
         .attr("r", 6)
 
-        // Details on demand: tooltip + nota de la región
+        // Details on demand: tooltip + acorde de la región
         .on("mouseenter", mostrarDetalle)
         .on("mousemove", moverTooltip)
-        .on("mouseleave", ocultarTooltip);
+        .on("mouseleave", () => {
+            ocultarTooltip();
+            Sonido.detener();
+        });
 
 
     // --------------------------------------------------------
@@ -534,6 +533,8 @@ function updateYear(year) {
                     : 0.3
         );
 
+    requestAnimationFrame(actualizarEnlacesRegiones);
+
 
     // ========================================================
     // ACTUALIZAR CHILE
@@ -562,9 +563,6 @@ function updateYear(year) {
         svg
             .select(".chile-point")
             .datum(chile);
-
-        // Sonificación: nota del país para este año
-        Sonido.tocar(chile.prop_mujeres);
 
     } else {
 
@@ -761,7 +759,7 @@ function nombreCorto(region) {
 }
 
 
-function mostrarDetalle(event, d) {
+function mostrarDetalle(event, d, sonar = true) {
 
     if (!d) return;
 
@@ -775,8 +773,9 @@ function mostrarDetalle(event, d) {
 
     moverTooltip(event);
 
-    // La misma regla de sonido que el país: se compara con la nota de paridad
-    Sonido.tocar(d.prop_mujeres, { volumen: 0.18, duracion: 0.35 });
+    if (sonar) {
+        Sonido.tocar(d.hombres, d.mujeres);
+    }
 }
 
 
@@ -791,28 +790,4 @@ function moverTooltip(event) {
 function ocultarTooltip() {
 
     tooltip.style("opacity", 0);
-}
-
-
-// ============================================================
-// BOTÓN DE SONIDO
-// ============================================================
-
-function initializeSoundButton() {
-
-    const boton = d3.select("#sound-button");
-
-    boton.on("click", function () {
-
-        const activo = Sonido.alternar();
-
-        boton
-            .text(activo ? "🔊 Sonido activado" : "🔈 Activar sonido")
-            .classed("activo", activo);
-
-        // Al activar, suena el año actual para escuchar la referencia
-        if (activo) {
-            updateYear(+d3.select("#year-slider").property("value"));
-        }
-    });
 }

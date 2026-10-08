@@ -2,122 +2,172 @@
 // SONIFICACIÓN
 // ============================================================
 //
-// Qué codifica el sonido:
+// Al pasar el cursor por una región, área o carrera, un acorde coral
+// sostenido representa las proporciones de hombres y mujeres del año
+// seleccionado. Ambas capas se apagan al salir del elemento.
 //
-// - Una nota de fondo suave y constante marca la PARIDAD (50 %).
-// - Cada año, una nota corta suena con una ALTURA proporcional a la
-//   proporción de mujeres en Chile: 1 punto porcentual = 1 semitono.
-//     · bajo 50 %  → nota más grave que el fondo
-//     · sobre 50 % → nota más aguda que el fondo
-//   Al reproducir la serie (Play) se escucha la "melodía" del cambio:
-//   parte grave en 1984 (~43 %) y cruza el fondo cuando se alcanza la paridad.
-// - Al pasar el cursor por una región suena su nota con la misma regla,
-//   así se puede comparar "de oído" con la paridad.
-//
-// El sonido parte apagado (los navegadores bloquean el audio hasta que
-// la persona interactúa) y se activa con el botón "Activar sonido".
+// El audio se inicia automáticamente al pasar el cursor por una región o barra.
 
 const Sonido = (() => {
 
-    const FRECUENCIA_PARIDAD = 220;   // La3 = 50 % de mujeres
-    const SEMITONOS_POR_PUNTO = 1;    // 1 punto porcentual = 1 semitono
+    const NOTAS_HOMBRES = [65.41, 98.00, 130.81];
+    const NOTAS_MUJERES = [523.25, 659.25, 783.99];
+    const VOLUMEN_MAXIMO = 0.36;
+    const EXPONENTE_CONTRASTE = 2;
+    const DURACION_SALIDA = 0.18;
 
     let ctx = null;
     let salida = null;
-    let fondo = null;
-    let activo = false;
-
-
-    // prop (0–1) → frecuencia en Hz
-    function frecuencia(prop) {
-        const puntos = (prop - 0.5) * 100;
-        const semitonos = puntos * SEMITONOS_POR_PUNTO;
-        return FRECUENCIA_PARIDAD * Math.pow(2, semitonos / 12);
-    }
+    let vocesActuales = null;
+    let solicitudAudio = 0;
 
 
     function iniciar() {
         if (ctx) return;
 
         ctx = new (window.AudioContext || window.webkitAudioContext)();
-
         salida = ctx.createGain();
         salida.gain.value = 0.8;
         salida.connect(ctx.destination);
     }
 
 
-    // Nota de fondo continua: la referencia de paridad
-    function encenderFondo() {
+    function crearVozCoral(frecuencia, formante1, q, femenina, ganancia) {
         const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
+        const filtro1 = ctx.createBiquadFilter();
+        const filtro2 = ctx.createBiquadFilter();
+        const detune = (Math.random() - 0.5) * 15;
 
-        osc.type = "sine";
-        osc.frequency.value = FRECUENCIA_PARIDAD;
+        osc.type = femenina ? "triangle" : "sawtooth";
+        osc.frequency.setValueAtTime(frecuencia, ctx.currentTime);
+        osc.detune.setValueAtTime(detune, ctx.currentTime);
 
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.5);
+        filtro1.type = "bandpass";
+        filtro1.frequency.setValueAtTime(formante1, ctx.currentTime);
+        filtro1.Q.setValueAtTime(q, ctx.currentTime);
 
-        osc.connect(gain).connect(salida);
-        osc.start();
+        filtro2.type = "bandpass";
+        filtro2.frequency.setValueAtTime(femenina ? 2800 : 900, ctx.currentTime);
+        filtro2.Q.setValueAtTime(q * 1.5, ctx.currentTime);
 
-        fondo = { osc, gain };
-    }
+        osc.connect(filtro1).connect(ganancia);
+        osc.connect(filtro2).connect(ganancia);
 
-
-    function apagarFondo() {
-        if (!fondo) return;
-
-        const t = ctx.currentTime;
-        fondo.gain.gain.cancelScheduledValues(t);
-        fondo.gain.gain.setValueAtTime(fondo.gain.gain.value, t);
-        fondo.gain.gain.linearRampToValueAtTime(0, t + 0.3);
-        fondo.osc.stop(t + 0.35);
-        fondo = null;
-    }
-
-
-    // Nota corta (tipo campana suave) para un valor de prop_mujeres
-    function tocar(prop, { duracion = 0.45, volumen = 0.25 } = {}) {
-        if (!activo || !Number.isFinite(prop)) return;
-
-        const t = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = "triangle";
-        osc.frequency.value = frecuencia(prop);
-
-        gain.gain.setValueAtTime(0, t);
-        gain.gain.linearRampToValueAtTime(volumen, t + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + duracion);
-
-        osc.connect(gain).connect(salida);
-        osc.start(t);
-        osc.stop(t + duracion + 0.05);
-    }
-
-
-    function alternar() {
-        iniciar();
-
-        activo = !activo;
-
-        if (activo) {
-            ctx.resume();
-            encenderFondo();
-        } else {
-            apagarFondo();
+        let vibrato = null;
+        if (femenina) {
+            vibrato = ctx.createOscillator();
+            const profundidad = ctx.createGain();
+            vibrato.frequency.setValueAtTime(5.5, ctx.currentTime);
+            profundidad.gain.setValueAtTime(frecuencia * 0.015, ctx.currentTime);
+            vibrato.connect(profundidad).connect(osc.frequency);
+            vibrato.start();
         }
 
-        return activo;
+        osc.start();
+        return { osc, vibrato };
+    }
+
+
+    function crearCapa(notas, femenina, pan) {
+        const ganancia = ctx.createGain();
+        const panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+        const voces = [];
+
+        ganancia.gain.setValueAtTime(0, ctx.currentTime);
+
+        if (panner) {
+            panner.pan.setValueAtTime(pan, ctx.currentTime);
+            ganancia.connect(panner).connect(salida);
+        } else {
+            ganancia.connect(salida);
+        }
+
+        notas.forEach(frecuencia => {
+            voces.push(crearVozCoral(
+                frecuencia,
+                femenina ? 1000 : 350,
+                femenina ? 3.2 : 4.5,
+                femenina,
+                ganancia
+            ));
+        });
+
+        return { ganancia, voces };
+    }
+
+
+    function atenuarCapa(capa, tiempo) {
+        capa.ganancia.gain.cancelScheduledValues(tiempo);
+        capa.ganancia.gain.setTargetAtTime(0, tiempo, DURACION_SALIDA / 4);
+
+        capa.voces.forEach(({ osc, vibrato }) => {
+            osc.stop(tiempo + DURACION_SALIDA + 0.02);
+            if (vibrato) vibrato.stop(tiempo + DURACION_SALIDA + 0.02);
+        });
+    }
+
+
+    function detener() {
+        solicitudAudio += 1;
+        if (!vocesActuales || !ctx) return;
+
+        const anteriores = vocesActuales;
+        vocesActuales = null;
+        const tiempo = ctx.currentTime;
+
+        atenuarCapa(anteriores.hombres, tiempo);
+        atenuarCapa(anteriores.mujeres, tiempo);
+    }
+
+
+    function tocar(hombres, mujeres) {
+        const total = hombres + mujeres;
+        if (!Number.isFinite(total) || total <= 0) return;
+
+        iniciar();
+        const solicitud = ++solicitudAudio;
+
+        if (vocesActuales) {
+            const anteriores = vocesActuales;
+            vocesActuales = null;
+            const tiempo = ctx.currentTime;
+            atenuarCapa(anteriores.hombres, tiempo);
+            atenuarCapa(anteriores.mujeres, tiempo);
+        }
+
+        ctx.resume()
+            .then(() => {
+                if (solicitud !== solicitudAudio) return;
+
+                const hombresRatio = hombres / total;
+                const mujeresRatio = mujeres / total;
+                const pesoHombres = Math.pow(hombresRatio, EXPONENTE_CONTRASTE);
+                const pesoMujeres = Math.pow(mujeresRatio, EXPONENTE_CONTRASTE);
+                const pesoMaximo = Math.max(pesoHombres, pesoMujeres);
+                const tiempo = ctx.currentTime;
+                const capaHombres = crearCapa(NOTAS_HOMBRES, false, 0.35);
+                const capaMujeres = crearCapa(NOTAS_MUJERES, true, -0.35);
+
+                capaHombres.ganancia.gain.linearRampToValueAtTime(
+                    pesoHombres / pesoMaximo * VOLUMEN_MAXIMO,
+                    tiempo + 0.08
+                );
+                capaMujeres.ganancia.gain.linearRampToValueAtTime(
+                    pesoMujeres / pesoMaximo * VOLUMEN_MAXIMO,
+                    tiempo + 0.08
+                );
+
+                vocesActuales = { hombres: capaHombres, mujeres: capaMujeres };
+            })
+            .catch(error => {
+                console.error("El navegador no permitió iniciar el audio:", error);
+            });
     }
 
 
     return {
-        alternar,
         tocar,
-        estaActivo: () => activo
+        detener
     };
 
 })();

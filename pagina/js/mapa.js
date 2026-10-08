@@ -33,6 +33,7 @@ const Mapa = (() => {
 
     let regiones = null;       // features del GeoJSON
     let anioPendiente = null;  // si el año cambia antes de que cargue el mapa
+    let proyectar = null;
 
     const svg = d3.select("#mapa")
         .append("svg")
@@ -120,6 +121,7 @@ const Mapa = (() => {
             .fitExtent([[10, 10], [width - 10, height - 70]], geo);
 
         const path = d3.geoPath(proyeccion);
+        proyectar = feature => path.centroid(feature);
 
         svg.append("g")
             .attr("class", "regiones-mapa")
@@ -132,10 +134,12 @@ const Mapa = (() => {
             .on("mouseenter", function (event, d) {
                 d3.select(this).raise().classed("activa", true);
                 destacarPunto(d.properties.region, true);
+                destacarEnlace(d.properties.region, true);
 
                 if (d.dato) {
-                    mostrarDetalle(event, d.dato);     // tooltip + sonido (regiones.js)
+                    mostrarDetalle(event, d.dato);     // tooltip + sonificación (regiones.js)
                 } else {
+                    Sonido.detener();
                     tooltip.style("opacity", 1).html(
                         `<strong>${d.properties.region}</strong><br>Sin datos este año (región aún no creada o sin matrícula registrada)`
                     );
@@ -146,8 +150,12 @@ const Mapa = (() => {
             .on("mouseleave", function (event, d) {
                 d3.select(this).classed("activa", false);
                 destacarPunto(d.properties.region, false);
+                destacarEnlace(d.properties.region, false);
                 ocultarTooltip();
+                Sonido.detener();
             });
+
+        requestAnimationFrame(actualizarEnlacesRegiones);
     }
 
 
@@ -203,6 +211,87 @@ const Mapa = (() => {
         if (anioPendiente !== null) actualizar(anioPendiente);
     });
 
-    return { actualizar };
+    return {
+        actualizar,
+        centro: region => {
+            const feature = regiones?.find(d => d.properties.region === region);
+            return feature && proyectar ? proyectar(feature) : null;
+        }
+    };
 
 })();
+
+
+function actualizarEnlacesRegiones() {
+    const contenedor = document.querySelector(".regiones-layout");
+    const mapaSvg = document.querySelector("#mapa svg");
+    const etiquetas = d3.select("#chart").selectAll(".region-label").nodes();
+
+    if (!contenedor || !mapaSvg || !etiquetas.length) return;
+
+    const bounds = contenedor.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+
+    let overlay = d3.select(contenedor).select("svg.region-links");
+    if (overlay.empty()) {
+        overlay = d3.select(contenedor)
+            .append("svg")
+            .attr("class", "region-links")
+            .attr("aria-hidden", "true");
+    }
+
+    overlay
+        .attr("width", bounds.width)
+        .attr("height", bounds.height)
+        .attr("viewBox", `0 0 ${bounds.width} ${bounds.height}`);
+
+    const matrizMapa = mapaSvg.getScreenCTM();
+    if (!matrizMapa) return;
+
+    const enlaces = etiquetas.map(etiqueta => {
+        const region = d3.select(etiqueta).datum();
+        const centroMapa = Mapa.centro(region);
+        if (!centroMapa) return null;
+
+        const punto = mapaSvg.createSVGPoint();
+        punto.x = centroMapa[0];
+        punto.y = centroMapa[1];
+        const posicionMapa = punto.matrixTransform(matrizMapa);
+        const boundsEtiqueta = etiqueta.getBoundingClientRect();
+
+        return {
+            region,
+            x1: posicionMapa.x - bounds.left,
+            y1: posicionMapa.y - bounds.top,
+            x2: boundsEtiqueta.left - bounds.left - 5,
+            y2: boundsEtiqueta.top + boundsEtiqueta.height / 2 - bounds.top
+        };
+    }).filter(Boolean);
+
+    overlay.selectAll("path.region-link")
+        .data(enlaces, d => d.region)
+        .join("path")
+        .attr("class", "region-link")
+        .attr("d", d => {
+            const controlX = (d.x1 + d.x2) / 2;
+            return `M${d.x1},${d.y1} C${controlX},${d.y1} ${controlX},${d.y2} ${d.x2},${d.y2}`;
+        });
+
+    d3.select("#chart").selectAll(".region-label")
+        .on("mouseenter.link", (event, region) => destacarEnlace(region, true))
+        .on("mouseleave.link", (event, region) => destacarEnlace(region, false));
+
+    d3.select("#chart").selectAll(".region-point")
+        .on("mouseenter.link", (event, d) => destacarEnlace(d.region, true))
+        .on("mouseleave.link", (event, d) => destacarEnlace(d.region, false));
+}
+
+function destacarEnlace(region, activo) {
+    d3.select(".region-links")
+        .selectAll(".region-link")
+        .filter(d => d.region === region)
+        .classed("activo", activo);
+}
+
+
+window.addEventListener("resize", () => requestAnimationFrame(actualizarEnlacesRegiones));

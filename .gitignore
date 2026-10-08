@@ -18,3 +18,5 @@ procesamiento/originales/geo-chile/
 __pycache__/
 .ipynb_checkpoints/
 .vscode/
+
+data/
