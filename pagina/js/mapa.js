@@ -223,6 +223,12 @@ const Mapa = (() => {
 
 
 function actualizarEnlacesRegiones() {
+    const desvioCurva = new Map([
+        ["Región De Arica Y Parinacota", -14],
+        ["Región De Tarapacá", 14],
+        ["Región De La Araucanía", -14],
+        ["Región De Los Ríos", 14]
+    ]);
     const contenedor = document.querySelector(".regiones-layout");
     const mapaSvg = document.querySelector("#mapa svg");
     const etiquetas = d3.select("#chart").selectAll(".region-label").nodes();
@@ -264,7 +270,8 @@ function actualizarEnlacesRegiones() {
             x1: posicionMapa.x - bounds.left,
             y1: posicionMapa.y - bounds.top,
             x2: boundsEtiqueta.left - bounds.left - 5,
-            y2: boundsEtiqueta.top + boundsEtiqueta.height / 2 - bounds.top
+            y2: boundsEtiqueta.top + boundsEtiqueta.height / 2 - bounds.top,
+            desvio: desvioCurva.get(region) || 0
         };
     }).filter(Boolean);
 
@@ -274,7 +281,7 @@ function actualizarEnlacesRegiones() {
         .attr("class", "region-link")
         .attr("d", d => {
             const controlX = (d.x1 + d.x2) / 2;
-            return `M${d.x1},${d.y1} C${controlX},${d.y1} ${controlX},${d.y2} ${d.x2},${d.y2}`;
+            return `M${d.x1},${d.y1} C${controlX},${d.y1 + d.desvio} ${controlX},${d.y2 + d.desvio} ${d.x2},${d.y2}`;
         });
 
     d3.select("#chart").selectAll(".region-label")

@@ -155,7 +155,7 @@ h1 {
 }
 
 .region-label {
-    font-size: 16px;
+    font-size: 18px;
     fill: #444;
 }
 
@@ -229,12 +229,12 @@ h1 {
 }
 
 .parity-label {
-    font-size: 15px;
+    font-size: 17px;
     fill: #777;
 }
 
 .axis text {
-    font-size: 14px;
+    font-size: 16px;
     fill: var(--color-secundario);
 }
 
@@ -246,15 +246,15 @@ h1 {
 /* El gráfico de regiones se dibuja a 1100 px de ancho y el navegador lo
    achica (~70 %), así que sus textos necesitan un tamaño mayor */
 #chart .region-label {
-    font-size: 21px;
+    font-size: 24px;
 }
 
 #chart .axis text {
-    font-size: 17px;
+    font-size: 19px;
 }
 
 #chart .leyenda-eje {
-    font-size: 19px;
+    font-size: 21px;
 }
 
 /* -------------------------
@@ -296,7 +296,7 @@ h1 {
 }
 
 .chile-label {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     fill: #111;
 }
@@ -357,7 +357,7 @@ h1 {
     border: 1px solid var(--color-borde);
     border-radius: 6px;
     padding: 8px 10px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     transition: opacity 0.15s;
@@ -439,7 +439,7 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    font-size: 15px;
+    font-size: 17px;
     color: #444;
     margin-bottom: 12px;
     align-items: center;
@@ -487,7 +487,7 @@ h3 {
 }
 
 .leyenda-eje {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -500,14 +500,14 @@ h3 {
 }
 
 .fila .valor {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     fill: white;
     pointer-events: none;
 }
 
 .fila .total {
-    font-size: 14px;
+    font-size: 16px;
     fill: #777;
 }
 
@@ -544,6 +544,16 @@ h3 {
 
 .fila.clickable {
     cursor: pointer;
+}
+
+.fila.clickable .nombre {
+    font-size: 19px;
+}
+
+.fila.clickable .indicador-area {
+    font-size: 28px;
+    font-weight: bold;
+    fill: var(--color-titulo);
 }
 
 .fila.clickable:hover .nombre,
@@ -588,7 +598,7 @@ h3 {
 }
 
 .leyenda-mapa text {
-    font-size: 12px;
+    font-size: 14px;
     fill: var(--color-secundario);
 }
 
@@ -713,8 +723,8 @@ h3 {
 }
 
 /* Etiquetas largas de carreras: la mono es más ancha */
-#carreras .fila .nombre {
-    font-size: 15px;
+#carreras .fila:not(.clickable) .nombre {
+    font-size: 17px;
 }
 
 /* Elementos con la tipografía de títulos */

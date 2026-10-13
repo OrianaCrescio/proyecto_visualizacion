@@ -21,7 +21,7 @@ const Carreras = (() => {
 
     const width = 1100;
     const margin = { top: 40, right: 110, bottom: 20, left: 370 };
-    const MAX_CARACTERES = 44;
+    const MAX_CARACTERES = 40;
     const alturaFila = 34;
     const GAP = 2;
 
@@ -153,12 +153,21 @@ const Carreras = (() => {
             .attr("y", barH / 2 + 6)
             .attr("text-anchor", "end")
             .attr("dominant-baseline", "middle")
-            .text(d => {
-                const flecha = clickable ? (d.nombre === areaAbierta ? "▾ " : "▸ ") : "";
+            .each(function (d) {
                 const nombre = d.nombre.length > MAX_CARACTERES
                     ? d.nombre.slice(0, MAX_CARACTERES - 1) + "…"
                     : d.nombre;
-                return flecha + nombre;
+                const etiqueta = d3.select(this).text(null);
+
+                if (clickable) {
+                    etiqueta.append("tspan")
+                        .attr("class", "indicador-area")
+                        .text(d.nombre === areaAbierta ? "▾ " : "▸ ");
+                }
+
+                etiqueta.append("tspan")
+                    .attr("class", "etiqueta-area")
+                    .text(nombre);
             });
 
         g.select(".seg-hombres")

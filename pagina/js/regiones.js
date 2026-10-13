@@ -7,7 +7,7 @@ const DATA_PATH = "data/matricula_genero_region.csv";
 const INITIAL_YEAR = 1984;
 
 const width = 1100;
-const height = 650;
+const height = 760;
 
 const margin = {
     top: 78,
@@ -30,7 +30,6 @@ let animationInterval = null;
 let isPlaying = false;
 
 const ANIMATION_SPEED = 700;
-
 
 // ============================================================
 // SVG
