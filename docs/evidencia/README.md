@@ -12,9 +12,10 @@ vN/
 | Versión | Copia navegable | Origen | En GitHub Pages |
 |---|---|---|---|
 | V1 | `v1/pagina/` | commit `0ba61f3` ("Release V1 to main"), la versión revisada en la R1 | `…/proyecto_visualizacion/docs/evidencia/v1/pagina/` |
+| V2 | `v2/pagina/` | copia de la carpeta `pagina/` actual al registrar esta versión | `…/proyecto_visualizacion/docs/evidencia/v2/pagina/` |
 
 Para guardar una versión nueva al cerrarla: copiar la carpeta `pagina/` completa a `docs/evidencia/vN/pagina/`
 (o desde git: `git archive <commit> pagina | tar -x -C docs/evidencia/vN`).
 
 Para verla en local hay que usar el servidor (`python3 -m http.server 8000` desde la raíz del repo) y abrir
-`http://localhost:8000/docs/evidencia/v1/pagina/`; con doble clic no carga los datos.
+`http://localhost:8000/docs/evidencia/v2/pagina/`; con doble clic no carga los datos.

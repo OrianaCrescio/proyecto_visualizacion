@@ -20,3 +20,5 @@ __pycache__/
 .vscode/
 
 data/
+!docs/evidencia/**/pagina/data/
+!docs/evidencia/**/pagina/data/**
