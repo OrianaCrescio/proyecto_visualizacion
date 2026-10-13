@@ -10,7 +10,7 @@ const width = 1100;
 const height = 650;
 
 const margin = {
-    top: 60,
+    top: 78,
     right: 60,
     bottom: 50,
     left: 280
@@ -133,6 +133,17 @@ function hasValidData(d) {
 
 
 // ============================================================
+// GÉNERO MAYORITARIO (colorea el punto: azul marino / lila)
+// ============================================================
+
+function claseSegunGenero(prop) {
+    if (prop > 0.5) return "mujeres";
+    if (prop < 0.5) return "hombres";
+    return "";   // paridad exacta: gris
+}
+
+
+// ============================================================
 // INICIALIZAR VISUALIZACIÓN
 // ============================================================
 
@@ -231,13 +242,13 @@ function initializeVisualization(ordenMapa) {
     svg.append("text")
         .attr("class", "leyenda-eje hombres")
         .attr("x", xScale(0))
-        .attr("y", 12)
+        .attr("y", 20)
         .text("← hombres");
 
     svg.append("text")
         .attr("class", "leyenda-eje mujeres")
         .attr("x", xScale(1))
-        .attr("y", 12)
+        .attr("y", 20)
         .attr("text-anchor", "end")
         .text("mujeres →");
 
@@ -449,7 +460,7 @@ function updateYear(year) {
 
         .attr(
             "class",
-            "region-point"
+            d => `region-point ${claseSegunGenero(d.prop_mujeres)}`
         )
 
         .attr(
@@ -482,7 +493,10 @@ function updateYear(year) {
     // su punto sí se mueve suavemente.
     // --------------------------------------------------------
 
+    // classed (no attr) para no borrar "destacado" si el mapa está en hover
     puntos
+        .classed("hombres", d => claseSegunGenero(d.prop_mujeres) === "hombres")
+        .classed("mujeres", d => claseSegunGenero(d.prop_mujeres) === "mujeres")
         .transition()
         .duration(300)
 
@@ -548,6 +562,11 @@ function updateYear(year) {
             .style(
                 "display",
                 null
+            )
+
+            .attr(
+                "class",
+                `chile-point ${claseSegunGenero(chile.prop_mujeres)}`
             )
 
             .transition()

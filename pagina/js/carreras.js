@@ -16,8 +16,8 @@ const Carreras = (() => {
     const ANIO_BASE = 2007;
     const TOP_CARRERAS = 15;
 
-    const COLOR_HOMBRES = "#2a78d6";
-    const COLOR_MUJERES = "#eb6834";
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#1f2f5c";   // definido en style.css
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#9b72cf";   // definido en style.css
 
     const width = 1100;
     const margin = { top: 40, right: 110, bottom: 20, left: 300 };

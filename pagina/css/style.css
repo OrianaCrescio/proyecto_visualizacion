@@ -3,8 +3,8 @@
 }
 
 :root {
-    --color-hombres: #2a78d6;
-    --color-mujeres: #eb6834;
+    --color-hombres: #1f2f5c;   /* azul marino */
+    --color-mujeres: #9b72cf;   /* lila */
     --color-texto: #222;
     --color-secundario: #666;
     --color-borde: #e5e5e5;
@@ -16,6 +16,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
     background-color: var(--color-fondo);
     color: var(--color-texto);
 }
@@ -31,13 +32,13 @@ header {
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 38px;
     line-height: 1.2;
     margin: 0 0 10px;
 }
 
 .subtitle {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-secundario);
     max-width: 700px;
     line-height: 1.5;
@@ -65,7 +66,7 @@ h1 {
     background: transparent;
     color: var(--color-secundario);
     font: inherit;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 12px 18px;
 }
@@ -101,11 +102,12 @@ h1 {
 }
 
 .year-container span {
+    font-size: 18px;
     color: var(--color-secundario);
 }
 
 .year-container strong {
-    font-size: 30px;
+    font-size: 36px;
     line-height: 1;
 }
 
@@ -118,7 +120,7 @@ h1 {
 }
 
 .region-label {
-    font-size: 12px;
+    font-size: 16px;
     fill: #444;
 }
 
@@ -154,10 +156,35 @@ h1 {
 
 .region-point {
     fill: #555;
+    transition: fill 0.25s ease;
+}
+
+/* Color del punto según qué género es mayoría en ese año */
+.region-point.hombres {
+    fill: var(--color-hombres);
+}
+
+.region-point.mujeres {
+    fill: var(--color-mujeres);
 }
 
 .chile-point {
     fill: #111;
+    transition: fill 0.25s ease;
+}
+
+.chile-point.hombres,
+.chile-point.mujeres {
+    stroke: #111;
+    stroke-width: 1.5;
+}
+
+.chile-point.hombres {
+    fill: var(--color-hombres);
+}
+
+.chile-point.mujeres {
+    fill: var(--color-mujeres);
 }
 
 .parity-line {
@@ -167,18 +194,32 @@ h1 {
 }
 
 .parity-label {
-    font-size: 12px;
+    font-size: 15px;
     fill: #777;
 }
 
 .axis text {
-    font-size: 11px;
+    font-size: 14px;
     fill: var(--color-secundario);
 }
 
 .axis path,
 .axis line {
     stroke: #bbb;
+}
+
+/* El gráfico de regiones se dibuja a 1100 px de ancho y el navegador lo
+   achica (~70 %), así que sus textos necesitan un tamaño mayor */
+#chart .region-label {
+    font-size: 21px;
+}
+
+#chart .axis text {
+    font-size: 17px;
+}
+
+#chart .leyenda-eje {
+    font-size: 19px;
 }
 
 /* -------------------------
@@ -192,7 +233,7 @@ h1 {
 
     margin-bottom: 24px;
 
-    font-size: 13px;
+    font-size: 15px;
     color: var(--color-secundario);
 }
 
@@ -220,7 +261,7 @@ h1 {
 }
 
 .chile-label {
-    font-size: 14px;
+    font-size: 22px;
     font-weight: bold;
     fill: #111;
 }
@@ -242,8 +283,8 @@ h1 {
     border: 1px solid #d5d5d5;
     background-color: var(--color-superficie);
     border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 8px 14px;
+    font-size: 15px;
     white-space: nowrap;
     color: var(--color-texto);
 }
@@ -261,7 +302,7 @@ h1 {
 
 .sound-legend {
     margin: 0;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.4;
     color: var(--color-secundario);
     max-width: 700px;
@@ -280,7 +321,7 @@ h1 {
     border: 1px solid var(--color-borde);
     border-radius: 6px;
     padding: 8px 10px;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     transition: opacity 0.15s;
@@ -301,13 +342,13 @@ h1 {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.25;
     margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 21px;
     margin: 0 0 10px;
 }
 
@@ -350,7 +391,7 @@ h3 {
     color: var(--color-texto);
     padding: 8px 12px;
     font: inherit;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #volver-areas:hover {
@@ -361,7 +402,7 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    font-size: 13px;
+    font-size: 15px;
     color: #444;
     margin-bottom: 12px;
     align-items: center;
@@ -407,7 +448,7 @@ h3 {
 }
 
 .leyenda-eje {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -420,14 +461,14 @@ h3 {
 }
 
 .fila .valor {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     fill: white;
     pointer-events: none;
 }
 
 .fila .total {
-    font-size: 12px;
+    font-size: 14px;
     fill: #777;
 }
 
@@ -448,7 +489,7 @@ h3 {
 }
 
 .fuente {
-    font-size: 12px;
+    font-size: 14px;
     color: #888;
 }
 
@@ -483,7 +524,7 @@ h3 {
 }
 
 .leyenda-mapa text {
-    font-size: 10px;
+    font-size: 12px;
     fill: var(--color-secundario);
 }
 
@@ -497,7 +538,7 @@ h3 {
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .regiones-layout {
