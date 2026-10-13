@@ -17,11 +17,11 @@ const Carreras = (() => {
     const TOP_CARRERAS = 15;
 
     const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8467b5";   // definido en style.css
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
 
     const width = 1100;
-    const margin = { top: 40, right: 110, bottom: 20, left: 300 };
-    const MAX_CARACTERES = 42;
+    const margin = { top: 40, right: 110, bottom: 20, left: 370 };
+    const MAX_CARACTERES = 44;
     const alturaFila = 34;
     const GAP = 2;
 
@@ -33,6 +33,10 @@ const Carreras = (() => {
     let porArea = new Map();   // anio -> área -> {hombres, mujeres}
     let anioActual = 2026;
     let areaAbierta = null;
+    let areaDibujada = null;   // área cuyo detalle está dibujado (para no redibujar al mover el año)
+
+    let intervaloPlay = null;
+    const VELOCIDAD_PLAY = 900;
 
     const x = d3.scaleLinear()
         .domain([0, 1])
@@ -109,16 +113,22 @@ const Carreras = (() => {
 
         const y = i => margin.top + i * alturaFila;
         const barH = alturaFila - 12;
+        const split = d => x(1 - d.actual.propMujeres);
 
         const g = svg.select(".filas")
             .selectAll(".fila")
             .data(filas, d => d.nombre)
             .join(enter => {
-                const f = enter.append("g").attr("class", "fila");
+                // Las filas nuevas aparecen directo en su lugar (sin venir desde arriba)
+                const f = enter.append("g").attr("class", "fila")
+                    .attr("transform", (d, i) => `translate(0, ${y(i)})`);
                 f.append("rect").attr("class", "hit");
                 f.append("text").attr("class", "region-label nombre");
-                f.append("rect").attr("class", "seg-hombres");
-                f.append("rect").attr("class", "seg-mujeres");
+                f.append("rect").attr("class", "seg-hombres")
+                    .attr("width", d => Math.max(0, split(d) - x(0) - GAP / 2));
+                f.append("rect").attr("class", "seg-mujeres")
+                    .attr("x", d => split(d) + GAP / 2)
+                    .attr("width", d => Math.max(0, x(1) - split(d) - GAP / 2));
                 f.append("text").attr("class", "valor valor-h");
                 f.append("text").attr("class", "valor valor-m");
                 f.append("line").attr("class", "marca-base-halo");
@@ -150,8 +160,6 @@ const Carreras = (() => {
                     : d.nombre;
                 return flecha + nombre;
             });
-
-        const split = d => x(1 - d.actual.propMujeres);
 
         g.select(".seg-hombres")
             .attr("y", 6).attr("height", barH).attr("rx", 3)
@@ -282,8 +290,39 @@ const Carreras = (() => {
             .slice(0, TOP_CARRERAS)
             .sort((a, b) => a.actual.propMujeres - b.actual.propMujeres);
 
-        d3.select("#chart-carreras").select("svg").remove();   // la lista cambia entera
+        // Solo se borra al cambiar de área; al mover el año las filas se reacomodan
+        if (areaDibujada !== areaAbierta) {
+            d3.select("#chart-carreras").select("svg").remove();
+            areaDibujada = areaAbierta;
+        }
         dibujar(d3.select("#chart-carreras"), filasCarreras);
+    }
+
+
+    // --------------------------------------------------------
+    // Play / pausa: recorre los años de 2007 a 2026
+    // --------------------------------------------------------
+
+    function reproducir([min, max]) {
+        if (anioActual >= max) anioActual = min - 1;   // si está al final, parte de nuevo
+
+        d3.select("#play-carreras").text("⏸ Pausa");
+
+        const avanzar = () => {
+            if (anioActual >= max) { pausar(); return; }
+            anioActual++;
+            d3.select("#slider-carreras").property("value", anioActual);
+            actualizar();
+        };
+
+        avanzar();
+        intervaloPlay = setInterval(avanzar, VELOCIDAD_PLAY);
+    }
+
+    function pausar() {
+        clearInterval(intervaloPlay);
+        intervaloPlay = null;
+        d3.select("#play-carreras").text("▶ Play");
     }
 
 
@@ -328,9 +367,14 @@ const Carreras = (() => {
             .attr("max", anios[1])
             .property("value", anioActual)
             .on("input", function () {
+                pausar();
                 anioActual = +this.value;
                 actualizar();
             });
+
+        d3.select("#play-carreras").on("click", () => {
+            if (intervaloPlay) pausar(); else reproducir(anios);
+        });
 
         d3.select("#min-carreras").text(anios[0]);
         d3.select("#max-carreras").text(anios[1]);

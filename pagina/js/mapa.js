@@ -22,7 +22,7 @@ const Mapa = (() => {
 
     const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
     const COLOR_PARIDAD = "#f1ecf3";
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8467b5";   // definido en style.css
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
     const COLOR_SIN_DATOS = "url(#sin-datos)";   // rayado: no se confunde con la paridad (gris)
 
     // ±20 puntos alrededor de la paridad cubre toda la serie (33 % – 57 %)

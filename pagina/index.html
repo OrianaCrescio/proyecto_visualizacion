@@ -7,20 +7,21 @@
     <title>Matrícula en Educación Superior en Chile</title>
 
     <!-- ?v=N obliga al navegador a bajar la versión nueva: súbanlo cuando cambien CSS/JS -->
-    <link rel="stylesheet" href="css/style.css?v=10">
+    <link rel="stylesheet" href="css/style.css?v=12">
 </head>
 
 <body>
 
-    <main>
-        <header>
-            <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
+    <header class="banda">
+        <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
 
-            <p class="subtitle">
-                Evolución de la proporción de mujeres matriculadas
-                en las regiones y carreras de Chile.
-            </p>
-        </header>
+        <p class="subtitle">
+            Evolución de la proporción de mujeres matriculadas
+            en las regiones y carreras de Chile.
+        </p>
+    </header>
+
+    <main>
 
         <div class="tabs" role="tablist" aria-label="Visualizaciones">
             <button
@@ -108,6 +109,11 @@
 
             <div class="slider-container">
                 <span id="min-carreras">2007</span>
+
+                <button id="play-carreras" type="button">
+                    ▶ Play
+                </button>
+
                 <input type="range" id="slider-carreras" min="2007" max="2026" value="2026" step="1">
                 <span id="max-carreras">2026</span>
             </div>
@@ -138,6 +144,10 @@
         </section>
     </main>
 
+    <footer class="pie">
+        <p>Proyecto del curso IIC2026 Visualización de Información · Pontificia Universidad Católica de Chile · 2026</p>
+    </footer>
+
 
     <!-- D3 -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -145,8 +155,8 @@
     <!-- Nuestro código -->
     <script src="js/sonido.js?v=11"></script>
     <script src="js/regiones.js?v=9"></script>
-    <script src="js/mapa.js?v=7"></script>
-    <script src="js/carreras.js?v=8"></script>
+    <script src="js/mapa.js?v=8"></script>
+    <script src="js/carreras.js?v=10"></script>
     <script src="js/tabs.js?v=2"></script>
 
 </body>
