@@ -16,8 +16,8 @@ const Carreras = (() => {
     const ANIO_BASE = 2007;
     const TOP_CARRERAS = 15;
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#1f2f5c";   // definido en style.css
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#9b72cf";   // definido en style.css
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8467b5";   // definido en style.css
 
     const width = 1100;
     const margin = { top: 40, right: 110, bottom: 20, left: 300 };
@@ -85,6 +85,7 @@ const Carreras = (() => {
 
             svg.append("g").attr("class", "filas");
 
+            svg.append("line").attr("class", "parity-halo");
             svg.append("line").attr("class", "parity-line");
         }
 
@@ -99,11 +100,12 @@ const Carreras = (() => {
                     .tickSize(4)
             );
 
-        svg.select(".parity-line")
+        svg.selectAll(".parity-halo, .parity-line")
             .attr("x1", x(0.5)).attr("x2", x(0.5))
             .attr("y1", margin.top - 6)
-            .attr("y2", height - margin.bottom + 4)
-            .raise();
+            .attr("y2", height - margin.bottom + 4);
+        svg.select(".parity-halo").raise();
+        svg.select(".parity-line").raise();
 
         const y = i => margin.top + i * alturaFila;
         const barH = alturaFila - 12;
@@ -119,6 +121,7 @@ const Carreras = (() => {
                 f.append("rect").attr("class", "seg-mujeres");
                 f.append("text").attr("class", "valor valor-h");
                 f.append("text").attr("class", "valor valor-m");
+                f.append("line").attr("class", "marca-base-halo");
                 f.append("line").attr("class", "marca-base");
                 f.append("text").attr("class", "total");
                 return f;
@@ -180,9 +183,9 @@ const Carreras = (() => {
             .style("display", d => x(1) - split(d) < 36 ? "none" : null);
 
         // Marca de 2007 (antes vs. ahora)
-        g.select(".marca-base")
+        g.selectAll(".marca-base-halo, .marca-base")
             .style("display", d => d.base && anioActual !== ANIO_BASE ? null : "none")
-            .attr("y1", 1).attr("y2", barH + 11)
+            .attr("y1", 3).attr("y2", barH + 9)
             .transition().duration(300)
             .attr("x1", d => d.base ? x(1 - d.base.propMujeres) : 0)
             .attr("x2", d => d.base ? x(1 - d.base.propMujeres) : 0);

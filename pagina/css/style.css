@@ -3,12 +3,13 @@
 }
 
 :root {
-    --color-hombres: #1f2f5c;   /* azul marino */
-    --color-mujeres: #9b72cf;   /* lila */
-    --color-texto: #222;
-    --color-secundario: #666;
-    --color-borde: #e5e5e5;
-    --color-fondo: #f7f7f7;
+    --color-hombres: #190e4f;   /* crepúsculo profundo */
+    --color-mujeres: #8467b5;   /* lavanda (más saturada que la empolvada, para distinguir) */
+    --color-texto: #03012c;     /* azul de Prusia */
+    --color-secundario: #5c5670;
+    --color-borde: #ddcfe0;
+    --color-fondo: #eddfef;     /* velo de lavanda */
+    --color-acento: #ffd9da;    /* rubor suave */
     --color-superficie: #fff;
     --radio-tarjeta: 8px;
 }
@@ -292,6 +293,7 @@ h1 {
 #sound-button:hover,
 #play-button:hover {
     border-color: var(--color-hombres);
+    background-color: var(--color-acento);
 }
 
 #sound-button.activo {
@@ -396,6 +398,7 @@ h3 {
 
 #volver-areas:hover {
     border-color: var(--color-hombres);
+    background-color: var(--color-acento);
 }
 
 .leyenda {
@@ -431,15 +434,17 @@ h3 {
 
 .leyenda .linea-paridad {
     width: 0;
-    height: 14px;
-    border-left: 1.5px dashed #999;
+    height: 16px;
+    border-left: 2px dashed var(--color-texto);
     display: inline-block;
 }
 
 .leyenda .linea-base {
-    width: 0;
-    height: 14px;
-    border-left: 2px solid #111;
+    width: 6px;
+    height: 18px;
+    border-radius: 3px;
+    background-color: var(--color-acento);
+    border: 1.5px solid var(--color-texto);
     display: inline-block;
 }
 
@@ -472,9 +477,34 @@ h3 {
     fill: #777;
 }
 
+.fila .marca-base,
+.fila .marca-base-halo {
+    pointer-events: none;
+    stroke-linecap: round;
+}
+
+/* Marca 2007: rubor con contorno oscuro, se ve sobre ambos colores */
+.fila .marca-base-halo {
+    stroke: var(--color-texto);
+    stroke-width: 7;
+}
+
 .fila .marca-base {
-    stroke: #111;
-    stroke-width: 2;
+    stroke: var(--color-acento);
+    stroke-width: 4;
+}
+
+/* Paridad en carreras: línea punteada oscura sobre una franja blanca */
+#carreras .parity-halo {
+    stroke: white;
+    stroke-width: 5;
+    pointer-events: none;
+}
+
+#carreras .parity-line {
+    stroke: var(--color-texto);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
     pointer-events: none;
 }
 
@@ -490,7 +520,7 @@ h3 {
 
 .fuente {
     font-size: 14px;
-    color: #888;
+    color: var(--color-secundario);
 }
 
 

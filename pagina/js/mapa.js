@@ -4,8 +4,8 @@
 //
 // Coroplético con escala DIVERGENTE centrada en la paridad:
 //   gris   = 50 % (paridad)
-//   naranja más intenso = más mujeres que hombres
-//   azul más intenso    = más hombres que mujeres
+//   lavanda más intenso = más mujeres que hombres
+//   azul oscuro más intenso = más hombres que mujeres
 // Mismos colores que la vista de carreras (una sola lógica de color en la página).
 //
 // Se mueve con el mismo slider / Play que el gráfico de puntos: regiones.js
@@ -20,14 +20,14 @@ const Mapa = (() => {
     const width = 260;
     const height = 650;       // misma altura que el gráfico de puntos, para alinearlos
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#1f2f5c";   // definido en style.css
-    const COLOR_PARIDAD = "#e4e3df";
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#9b72cf";   // definido en style.css
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
+    const COLOR_PARIDAD = "#f1ecf3";
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8467b5";   // definido en style.css
     const COLOR_SIN_DATOS = "url(#sin-datos)";   // rayado: no se confunde con la paridad (gris)
 
     // ±20 puntos alrededor de la paridad cubre toda la serie (33 % – 57 %)
     const color = d3.scaleDiverging()
-        .domain([0.30, 0.50, 0.70])
+        .domain([0.35, 0.50, 0.65])   // los datos van de 33 % a 57 %: escala más ajustada = más contraste
         .interpolator(d3.piecewise(d3.interpolateLab, [COLOR_HOMBRES, COLOR_PARIDAD, COLOR_MUJERES]))
         .clamp(true);
 
@@ -71,7 +71,7 @@ const Mapa = (() => {
         d3.range(0, 1.01, 0.1).forEach(t => {
             grad.append("stop")
                 .attr("offset", `${t * 100}%`)
-                .attr("stop-color", color(0.30 + t * 0.40));
+                .attr("stop-color", color(0.35 + t * 0.30));
         });
 
         const g = svg.append("g").attr("class", "leyenda-mapa");
@@ -82,7 +82,7 @@ const Mapa = (() => {
             .attr("rx", 2)
             .attr("fill", "url(#grad-paridad)");
 
-        [[0, "30 %"], [0.5, "50 %"], [1, "70 % mujeres"]].forEach(([t, txt]) => {
+        [[0, "35 %"], [0.5, "50 %"], [1, "65 %"]].forEach(([t, txt]) => {
             g.append("text")
                 .attr("x", x0 + t * w)
                 .attr("y", y0 + 24)
