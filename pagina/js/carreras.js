@@ -16,7 +16,7 @@ const Carreras = (() => {
     const ANIO_BASE = 2007;
     const TOP_CARRERAS = 15;
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#e0a100";   // definido en style.css
     const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
 
     const width = 1100;
@@ -225,6 +225,7 @@ const Carreras = (() => {
                     <span style="color:${COLOR_HOMBRES}">■</span> Hombres: <strong>${fmtPct1(1 - d.actual.propMujeres)}</strong> (${fmtMiles(d.actual.hombres)})<br>
                     ${cambio === null ? `Sin datos en ${ANIO_BASE}` :
                         `Mujeres ${cambio >= 0 ? "+" : "−"}${localeCL.format(".1f")(Math.abs(cambio))} puntos desde ${ANIO_BASE}`}
+                    ${clickable ? `<br><em class="tooltip-pista">Clic para ver sus carreras</em>` : ""}
                 `);
                 moverTooltip(event);
             })

@@ -7,7 +7,7 @@
     <title>Matrícula en Educación Superior en Chile</title>
 
     <!-- ?v=N obliga al navegador a bajar la versión nueva: súbanlo cuando cambien CSS/JS -->
-    <link rel="stylesheet" href="css/style.css?v=14">
+    <link rel="stylesheet" href="css/style.css?v=18">
 </head>
 
 <body>
@@ -75,9 +75,10 @@
 
             <div class="sound-container">
                 <p class="sound-legend">
-                    Pasa el cursor por una región o barra para escuchar un acorde
-                    según las proporciones de hombres y mujeres. El sonido se
-                    detiene al salir del elemento.
+                    🔊 Pasa el cursor por una región para escucharla: un coro <strong>grave</strong>
+                    (a la izquierda) son los <strong class="txt-hombres">hombres</strong> y uno
+                    <strong>agudo</strong> (a la derecha) son las <strong class="txt-mujeres">mujeres</strong>.
+                    El grupo que es mayoría suena más fuerte; si suenan parejo, hay paridad.
                 </p>
             </div>
 
@@ -97,8 +98,12 @@
 
                 <p class="subtitle">
                     Matrícula de pregrado por área del conocimiento: hombres desde la izquierda,
-                    mujeres desde la derecha. Pasa el cursor para escuchar su proporción;
-                    haz clic en un área para ver sus carreras.
+                    mujeres desde la derecha. Pasa el cursor para escuchar los dos coros
+                    (grave = hombres, agudo = mujeres).
+                </p>
+
+                <p class="pista-clic">
+                    ▸ Haz clic en un área para ver sus 15 carreras con más matrícula.
                 </p>
             </header>
 
@@ -137,7 +142,7 @@
             </div>
 
             <p class="fuente">
-                Versiones anteriores: <a href="../docs/evidencia/v1/pagina/">V1</a> ·
+                Versiones anteriores: <a href="../docs/evidencia/v1/pagina/">V1</a> · <a href="../docs/evidencia/v2/pagina/">V2</a> · <a href="../docs/evidencia/v3/pagina/">V3</a> ·
                 Fuente: Centro de Estudios MINEDUC, <a href="https://datosabiertos.mineduc.cl/matricula-en-educacion-superior/">Base de Matrícula en Educación Superior</a> 2007–2026
                 (microdatos por estudiante). Solo pregrado.
             </p>
@@ -153,10 +158,10 @@
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 
     <!-- Nuestro código -->
-    <script src="js/sonido.js?v=11"></script>
+    <script src="js/sonido.js?v=12"></script>
     <script src="js/regiones.js?v=12"></script>
-    <script src="js/mapa.js?v=9"></script>
-    <script src="js/carreras.js?v=11"></script>
+    <script src="js/mapa.js?v=10"></script>
+    <script src="js/carreras.js?v=12"></script>
     <script src="js/tabs.js?v=2"></script>
 
 </body>

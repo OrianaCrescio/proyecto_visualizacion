@@ -7,6 +7,9 @@
 // seleccionado. Ambas capas se apagan al salir del elemento.
 //
 // El audio se inicia automáticamente al pasar el cursor por una región o barra.
+//
+// V4: el coro de hombres suena a la izquierda y el de mujeres a la derecha, igual
+// que en los gráficos ("← hombres", "mujeres →"). En V3 estaba al revés.
 
 const Sonido = (() => {
 
@@ -145,8 +148,8 @@ const Sonido = (() => {
                 const pesoMujeres = Math.pow(mujeresRatio, EXPONENTE_CONTRASTE);
                 const pesoMaximo = Math.max(pesoHombres, pesoMujeres);
                 const tiempo = ctx.currentTime;
-                const capaHombres = crearCapa(NOTAS_HOMBRES, false, 0.35);
-                const capaMujeres = crearCapa(NOTAS_MUJERES, true, -0.35);
+                const capaHombres = crearCapa(NOTAS_HOMBRES, false, -0.35);
+                const capaMujeres = crearCapa(NOTAS_MUJERES, true, 0.35);
 
                 capaHombres.ganancia.gain.linearRampToValueAtTime(
                     pesoHombres / pesoMaximo * VOLUMEN_MAXIMO,

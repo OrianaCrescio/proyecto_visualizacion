@@ -1,8 +1,8 @@
 # Hoja del observador — Ronda 1
 
-**Fecha:** Por completar  
+**Fecha:** [COMPLETAR]  
 **Versión evaluada:** V3  
-**Participantes:** Personas que entregaron retroalimentación durante el proceso de diseño  
+**Participantes:** [COMPLETAR cuántas personas y su perfil] (personas externas al grupo)  
 **Observadoras:** Equipo del proyecto  
 **Duración:** No registrada
 

@@ -4,8 +4,8 @@
 //
 // Coroplético con escala DIVERGENTE centrada en la paridad:
 //   gris   = 50 % (paridad)
-//   lavanda más intenso = más mujeres que hombres
-//   azul oscuro más intenso = más hombres que mujeres
+//   morado más intenso = más mujeres que hombres
+//   amarillo más intenso = más hombres que mujeres
 // Mismos colores que la vista de carreras (una sola lógica de color en la página).
 //
 // Se mueve con el mismo slider / Play que el gráfico de puntos: regiones.js
@@ -20,8 +20,8 @@ const Mapa = (() => {
     const width = 260;
     const height = 650;       // misma altura que el gráfico de puntos, para alinearlos
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#190e4f";   // definido en style.css
-    const COLOR_PARIDAD = "#f1ecf3";
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#e0a100";   // definido en style.css
+    const COLOR_PARIDAD = "#f4f1f6";   // casi blanco: la paridad se ve "neutra"
     const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
     const COLOR_SIN_DATOS = "url(#sin-datos)";   // rayado: no se confunde con la paridad (gris)
 
@@ -81,6 +81,15 @@ const Mapa = (() => {
             .attr("width", w).attr("height", 10)
             .attr("rx", 2)
             .attr("fill", "url(#grad-paridad)");
+
+        // V4: qué significa cada extremo del color, sin tener que deducirlo
+        g.append("text").attr("class", "extremo hombres")
+            .attr("x", x0).attr("y", y0 - 7)
+            .text("más hombres");
+        g.append("text").attr("class", "extremo mujeres")
+            .attr("x", x0 + w).attr("y", y0 - 7)
+            .attr("text-anchor", "end")
+            .text("más mujeres");
 
         [[0, "35 %"], [0.5, "50 %"], [1, "65 %"]].forEach(([t, txt]) => {
             g.append("text")

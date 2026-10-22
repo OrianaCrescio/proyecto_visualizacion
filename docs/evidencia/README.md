@@ -13,6 +13,8 @@ vN/
 |---|---|---|---|
 | V1 | `v1/pagina/` | commit `0ba61f3` ("Release V1 to main"), la versión revisada en la R1 | `…/proyecto_visualizacion/docs/evidencia/v1/pagina/` |
 | V2 | `v2/pagina/` | copia de la carpeta `pagina/` actual al registrar esta versión | `…/proyecto_visualizacion/docs/evidencia/v2/pagina/` |
+| V3 | `v3/pagina/` | commit `6e7fcd5` (13/10) | `…/proyecto_visualizacion/docs/evidencia/v3/pagina/` |
+| V4 | `v4/pagina/` | copia de `pagina/` al cerrar la V4 (22/10) | `…/proyecto_visualizacion/docs/evidencia/v4/pagina/` |
 
 Para guardar una versión nueva al cerrarla: copiar la carpeta `pagina/` completa a `docs/evidencia/vN/pagina/`
 (o desde git: `git archive <commit> pagina | tar -x -C docs/evidencia/vN`).
