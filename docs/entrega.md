@@ -11,7 +11,6 @@
 - **Integrantes:** Antonia Ramos · Oriana Crescio · Florencia Godoy
 - **GitHub Pages:** https://orianacrescio.github.io/proyecto_visualizacion/
 - **Repositorio:** https://github.com/OrianaCrescio/proyecto_visualizacion
-- **Videos de evidencia (OneDrive):** https://uccl0-my.sharepoint.com/:f:/r/personal/antonia_ramos_uc_cl/Documents/InfoVis?d=w5e1430c7df5c4d24932cc2f25ed17efd&csf=1&web=1&e=zBr1ej
 - **Video final (V4):** [YouTube](https://youtu.be/LmSdQFqW3WI)
 
 > YouTube redujo la definición de los videos. Para verlos con mayor nitidez, recomendamos usar las
