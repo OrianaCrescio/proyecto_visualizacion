@@ -197,8 +197,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - **Qué se discutió:** los ayudantes revisaron la evolución desde V1 y no hicieron observaciones
   de fondo ni pidieron cambios concretos.
 - **Qué decidimos:** sin indicaciones nuevas, basamos los ajustes finales en lo que sí teníamos
-  pendiente: lo que el grupo 10 dijo en la R2 y no habíamos resuelto en V3, y las evaluaciones con
-  usuarios (sección 10).
+  pendiente: lo que el grupo 10 dijo en la R2 y no habíamos resuelto en V3, y la ronda 1 de
+  evaluación con usuarios (17 y 18/10, sección 10).
 - **Cómo se ve en V4:** ver sección 9. Cada cambio de V4 indica si viene de la R2 o de los usuarios.
 
 ---
@@ -221,7 +221,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - Pista "Haz clic en un área…" bajo el título y en el tooltip; el mapa rotula "más hombres / más mujeres".
 
 **Por qué**
-- Color (usuarios ronda 1 y R2): la comparación hombres/mujeres tenía que notarse más, y el grupo 10
+- Color (usuarios U1 y U2, y R2): la comparación hombres/mujeres tenía que notarse más, y el grupo 10
   había valorado el contraste de V2 que perdimos con dos morados. Amarillo y lavanda difieren en tono
   y luminosidad, el contraste se mantiene con daltonismo rojo-verde y no cae en rosado/celeste. Texto
   negro sobre amarillo 8,3:1; en textos sueltos usamos versiones más oscuras de ambos colores.
@@ -253,23 +253,28 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 ## 10. Evaluación con usuarios
 
-| Ronda | Fecha | Versión evaluada | Participantes | Registro |
+| Ronda | Fecha | Versión | Participantes | Registro |
 |---|---|---|---|---|
-| 1 | [COMPLETAR] | V3 | [COMPLETAR perfil] | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
-| 2 | 22/10/2026 | V4 | [COMPLETAR perfil] | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
+| 1 | 17 y 18/10/2026 | V3 | Andrés Rodríguez, Pablo Huidobro (U1), Jacinta Velao (U2) | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
+| 2 | 22/10/2026 | V4 | [COMPLETAR] | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
 
-**Ronda 1 (V3).** Fue retroalimentación sobre la V3, no una sesión de thinking aloud completa: no
-tenemos bitácora con tiempos ni citas literales, y lo decimos así. Hallazgos:
-- No quedaba claro qué coro era hombres y cuál mujeres.
-- La comparación visual entre hombres y mujeres pedía más contraste.
-- El mapa y los colores ayudaron, aunque al principio no se entendía qué significaba cada tono.
-- Nadie descubrió solo que las áreas se podían abrir para ver carreras.
+**Ronda 1 (V3).** Thinking aloud de ~8 minutos con U1 y U2, sin explicarles la interfaz; con Andrés
+quedaron los comentarios, no la bitácora. Hallazgos:
+- Sonido: U1 escuchó los coros pero no supo qué eran («Escucho sonidos, pero no entiendo qué
+  representa cada uno», 04:00) y preguntó «¿Hay un sonido para mujeres y otro para hombres?».
+  Concluyó que entendía mejor lo visual que el sonido.
+- Interacción: U2 creyó que Carreras era un gráfico estático («Pensé que esto era solo un gráfico»,
+  03:30) y tardó un minuto en descubrir el clic. Andrés dijo lo mismo.
+- Color: U1 no sabía si el color del mapa indicaba qué grupo era mayoría o cuánta era la diferencia
+  (01:00). U2 pidió ver la comparación hombres/mujeres «más directamente» (06:00).
+- Lo que funcionó: los tres valoraron el mapa, y U2 dijo que una vez entendido «es fácil explorar».
 
-Efecto (V3 → V4): los cuatro hallazgos se tradujeron en cambios de V4 (sección 9): paleta amarillo/lavanda,
-leyenda del sonido y paneo coherente, extremos rotulados en el mapa, y pista de clic. Coinciden con
-lo que había dicho el grupo 10 en la R2, lo que nos dio más confianza para priorizarlos.
+**Efecto (V3 → V4):** leyenda explícita del sonido y paneo coherente con el gráfico; paleta
+amarillo/lavanda; extremos rotulados en el mapa; pista de clic en Carreras y en el tooltip. Lo que no
+incorporamos, con su motivo, está en `ronda_1.md`. Estos hallazgos coinciden con lo que dijo el grupo
+10 en la R2, y como en la R3 no hubo indicaciones nuevas, fueron la base de la V4.
 
-**Ronda 2 (V4), thinking aloud.** [COMPLETAR después de la sesión, con el formato de `ronda_2.md`.]
+**Ronda 2 (V4).** [COMPLETAR después de la sesión, con el formato de `ronda_2.md`.]
 - Hallazgos principales (incluido el sonido): [COMPLETAR]
 - Efecto en el proceso: [COMPLETAR. Si se alcanza a corregir algo hoy: "V4 → V4.1" con su commit. Si no,
   decir qué cambiaríamos y por qué no se incorporó.]
