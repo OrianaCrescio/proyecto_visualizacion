@@ -16,8 +16,9 @@ const Carreras = (() => {
     const ANIO_BASE = 2007;
     const TOP_CARRERAS = 15;
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#e0a100";   // definido en style.css
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#ffdf00";   // definido en style.css
+    const COLOR_HOMBRES_TEXTO = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres-texto").trim() || "#805500";
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#633b91";   // definido en style.css
 
     const width = 1100;
     const margin = { top: 40, right: 110, bottom: 20, left: 370 };
@@ -93,11 +94,14 @@ const Carreras = (() => {
             const patron = svg.append("defs").append("pattern")
                 .attr("id", idAchurado)
                 .attr("patternUnits", "userSpaceOnUse")
-                .attr("width", 7).attr("height", 7)
+                .attr("width", 8).attr("height", 8)
                 .attr("patternTransform", "rotate(45)");
             patron.append("line")
-                .attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 7)
-                .attr("stroke", "white").attr("stroke-width", 3).attr("stroke-opacity", 0.85);
+                .attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 8)
+                .attr("stroke", "white").attr("stroke-width", 3).attr("stroke-opacity", 0.95);
+            patron.append("line")
+                .attr("x1", 4).attr("y1", 0).attr("x2", 4).attr("y2", 8)
+                .attr("stroke", "#241a33").attr("stroke-width", 3).attr("stroke-opacity", 0.75);
 
             svg.append("g").attr("class", "filas");
 
@@ -236,7 +240,7 @@ const Carreras = (() => {
                 tooltip.style("opacity", 1).html(`
                     <strong>${d.nombre}</strong> · ${anioActual}<br>
                     <span style="color:${COLOR_MUJERES}">■</span> Mujeres: <strong>${fmtPct1(d.actual.propMujeres)}</strong> (${fmtMiles(d.actual.mujeres)})<br>
-                    <span style="color:${COLOR_HOMBRES}">■</span> Hombres: <strong>${fmtPct1(1 - d.actual.propMujeres)}</strong> (${fmtMiles(d.actual.hombres)})<br>
+                    <span style="color:${COLOR_HOMBRES_TEXTO}">■</span> Hombres: <strong>${fmtPct1(1 - d.actual.propMujeres)}</strong> (${fmtMiles(d.actual.hombres)})<br>
                     ${cambio === null ? `Sin datos en ${ANIO_BASE}` :
                         `Mujeres ${cambio >= 0 ? "+" : "−"}${localeCL.format(".1f")(Math.abs(cambio))} puntos desde ${ANIO_BASE}`}
                     ${clickable ? `<br><em class="tooltip-pista">Clic para ver sus carreras</em>` : ""}
