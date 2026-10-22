@@ -20,9 +20,9 @@ const Mapa = (() => {
     const width = 260;
     const height = 650;       // misma altura que el gráfico de puntos, para alinearlos
 
-    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#e0a100";   // definido en style.css
+    const COLOR_HOMBRES = getComputedStyle(document.documentElement).getPropertyValue("--color-hombres").trim() || "#ffdf00";   // definido en style.css
     const COLOR_PARIDAD = "#f4f1f6";   // casi blanco: la paridad se ve "neutra"
-    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#8d67b6";   // definido en style.css
+    const COLOR_MUJERES = getComputedStyle(document.documentElement).getPropertyValue("--color-mujeres").trim() || "#633b91";   // definido en style.css
     const COLOR_SIN_DATOS = "url(#sin-datos)";   // rayado: no se confunde con la paridad (gris)
 
     // ±20 puntos alrededor de la paridad cubre toda la serie (33 % – 57 %)

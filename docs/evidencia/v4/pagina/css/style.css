@@ -31,10 +31,10 @@
     /* V4: amarillo vs. morado. En V3 ambos eran morados (azul noche y lavanda) y se
        confundían; ahora difieren en tono Y en luminosidad, y el contraste amarillo–morado
        se mantiene con daltonismo rojo-verde (protanopía y deuteranopía). */
-    --color-hombres: #e0a100;        /* amarillo mostaza (rellenos) */
-    --color-hombres-texto: #8a6400;  /* el mismo amarillo, oscurecido para texto sobre blanco (5,4:1) */
-    --color-mujeres: #8d67b6;        /* morado lavanda (el de V3; texto blanco encima: 4,4:1) */
-    --color-mujeres-texto: #6b4594;  /* la misma lavanda, oscurecida para texto sobre blanco */
+    --color-hombres: #ffdf00;        /* amarillo limón intenso (rellenos; texto oscuro encima) */
+    --color-hombres-texto: #805500;  /* contraste 6,5:1 sobre blanco */
+    --color-mujeres: #633b91;        /* morado profundo (contraste 8,2:1 con texto blanco) */
+    --color-mujeres-texto: #593184;  /* contraste 9,6:1 sobre blanco */
 
     /* Línea gráfica: neutra, para que el color quede reservado a los datos */
     --color-banda: #6f4c9b;     /* banda del título y pie: lavanda un poco más oscura que la de los datos */
@@ -467,6 +467,7 @@ h3 {
 
 .leyenda .cuadro.hombres {
     background-color: var(--color-hombres);
+    border: 1px solid var(--color-hombres-texto);
 }
 
 .leyenda .cuadro.mujeres {
@@ -599,8 +600,8 @@ h3 {
 }
 
 .region-mapa {
-    stroke: white;
-    stroke-width: 0.6;
+    stroke: #9d96a6;
+    stroke-width: 0.8;
     cursor: pointer;
 }
 
@@ -813,7 +814,7 @@ h3,
     border-radius: 3px;
     display: inline-block;
     background: repeating-linear-gradient(45deg,
-        var(--color-mujeres) 0 4px, rgba(255, 255, 255, 0.85) 4px 7px);
+        #241a33 0 3px, rgba(255, 255, 255, 0.95) 3px 6px, var(--color-mujeres) 6px 8px);
 }
 
 .fila .cambio {
