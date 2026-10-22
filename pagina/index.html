@@ -11,6 +11,20 @@
 </head>
 
 <body>
+<!-- VNAV:inicio (barra para cambiar de versión) -->
+<style>
+/* Barra de versiones: estilos propios para que se vea igual en todas las versiones */
+.vnav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 16px;background:#1d1626;color:#eee;font:14px/1.4 system-ui,-apple-system,sans-serif;margin:0}
+.vnav span.vnav-titulo{opacity:.75}
+.vnav a,.vnav strong{color:#fff;text-decoration:none;padding:3px 10px;border-radius:4px}
+.vnav a{background:rgba(255,255,255,.08)}
+.vnav a:hover{background:rgba(255,255,255,.22)}
+.vnav strong{background:#e0a100;color:#111}
+.vnav small{opacity:.7;margin-left:4px;font-weight:normal}
+</style>
+<nav class="vnav" aria-label="Versiones del proyecto"><span class="vnav-titulo">Versiones:</span> <a href="../docs/evidencia/v1/pagina/">V1<small>28/09</small></a> <a href="../docs/evidencia/v2/pagina/">V2<small>07/10</small></a> <a href="../docs/evidencia/v3/pagina/">V3<small>13/10</small></a> <strong aria-current="page">V4<small>22/10</small> · actual</strong></nav>
+<!-- VNAV:fin -->
+
 
     <header class="banda">
         <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
@@ -142,7 +156,6 @@
             </div>
 
             <p class="fuente">
-                Versiones anteriores: <a href="../docs/evidencia/v1/pagina/">V1</a> · <a href="../docs/evidencia/v2/pagina/">V2</a> · <a href="../docs/evidencia/v3/pagina/">V3</a> ·
                 Fuente: Centro de Estudios MINEDUC, <a href="https://datosabiertos.mineduc.cl/matricula-en-educacion-superior/">Base de Matrícula en Educación Superior</a> 2007–2026
                 (microdatos por estudiante). Solo pregrado.
             </p>

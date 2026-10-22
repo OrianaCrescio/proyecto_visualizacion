@@ -221,7 +221,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - Pista "Haz clic en un área…" bajo el título y en el tooltip; el mapa rotula "más hombres / más mujeres".
 
 **Por qué**
-- Color (usuarios U1 y U2, y R2): la comparación hombres/mujeres tenía que notarse más, y el grupo 10
+- Color (usuarios U2 y U3, y R2): la comparación hombres/mujeres tenía que notarse más, y el grupo 10
   había valorado el contraste de V2 que perdimos con dos morados. Amarillo y lavanda difieren en tono
   y luminosidad, el contraste se mantiene con daltonismo rojo-verde y no cae en rosado/celeste. Texto
   negro sobre amarillo 8,3:1; en textos sueltos usamos versiones más oscuras de ambos colores.
@@ -255,19 +255,19 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 | Ronda | Fecha | Versión | Participantes | Registro |
 |---|---|---|---|---|
-| 1 | 17 y 18/10/2026 | V3 | Andrés Rodríguez (egresado de Ing. en TI, emprendimiento en IA), Pablo Huidobro (U1) y Jacinta Velao (U2), estudiantes de carreras no relacionadas | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
+| 1 | 17 y 18/10/2026 | V3 | U1 Andrés Rodríguez (egresado de Ing. en TI, emprendimiento en IA); U2 Pablo Huidobro y U3 Jacinta Velao (estudiantes universitarios) | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
 | 2 | 22/10/2026 | V4 | [COMPLETAR] | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
 
-**Ronda 1 (V3).** Thinking aloud de ~8 minutos con U1 y U2, sin explicarles la interfaz; con Andrés
+**Ronda 1 (V3).** Thinking aloud de ~8 minutos con U2 y U3, sin explicarles la interfaz; con U1 (Andrés)
 quedaron los comentarios, no la bitácora. Hallazgos:
-- Sonido: U1 escuchó los coros pero no supo qué eran («Escucho sonidos, pero no entiendo qué
+- Sonido: U2 escuchó los coros pero no supo qué eran («Escucho sonidos, pero no entiendo qué
   representa cada uno», 04:00) y preguntó «¿Hay un sonido para mujeres y otro para hombres?».
   Concluyó que entendía mejor lo visual que el sonido.
-- Interacción: U2 creyó que Carreras era un gráfico estático («Pensé que esto era solo un gráfico»,
-  03:30) y tardó un minuto en descubrir el clic. Andrés dijo lo mismo.
-- Color: U1 no sabía si el color del mapa indicaba qué grupo era mayoría o cuánta era la diferencia
-  (01:00). U2 pidió ver la comparación hombres/mujeres «más directamente» (06:00).
-- Lo que funcionó: los tres valoraron el mapa, y U2 dijo que una vez entendido «es fácil explorar».
+- Interacción: U3 creyó que Carreras era un gráfico estático («Pensé que esto era solo un gráfico»,
+  03:30) y tardó un minuto en descubrir el clic. U1 dijo lo mismo.
+- Color: U2 no sabía si el color del mapa indicaba qué grupo era mayoría o cuánta era la diferencia
+  (01:00). U3 pidió ver la comparación hombres/mujeres «más directamente» (06:00).
+- Lo que funcionó: los tres valoraron el mapa, y U3 dijo que una vez entendido «es fácil explorar».
 
 **Efecto (V3 → V4):** leyenda explícita del sonido y paneo coherente con el gráfico; paleta
 amarillo/lavanda; extremos rotulados en el mapa; pista de clic en Carreras y en el tooltip. Lo que no

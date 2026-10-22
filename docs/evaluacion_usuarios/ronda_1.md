@@ -7,13 +7,13 @@
 
 | Sesión | Fecha | Participante | Perfil | Familiaridad con visualizaciones |
 |---|---|---|---|---|
-| A | 17/10/2026 | Andrés Rodríguez | Egresado de Ingeniería en TI, lanzando un emprendimiento relacionado con IA | Perfil técnico |
-| U1 | 17/10/2026 | Pablo Huidobro | Estudiante universitario de una carrera no relacionada con visualización de datos | Media |
-| U2 | 18/10/2026 | Jacinta Velao | Estudiante universitaria sin experiencia en visualizaciones interactivas | Baja |
+| U1 | 17/10/2026 | Andrés Rodríguez | Egresado de Ingeniería en TI, lanzando un emprendimiento relacionado con IA | Perfil técnico |
+| U2 | 17/10/2026 | Pablo Huidobro | Estudiante universitario de una carrera no relacionada con visualización de datos | Media |
+| U3 | 18/10/2026 | Jacinta Velao | Estudiante universitaria sin experiencia en visualizaciones interactivas | Baja |
 
 ---
 
-## Sesión A · Andrés Rodríguez · 17/10/2026
+## Sesión U1 · Andrés Rodríguez · 17/10/2026
 
 [VERIFICAR] De esta sesión quedaron los comentarios, no la bitácora con tiempos. Las dudas sobre
 el sonido y la comparación visual que aparecían junto a estos comentarios vienen de la R1.
@@ -26,7 +26,7 @@ el sonido y la comparación visual que aparecían junto a estos comentarios vien
 
 ---
 
-## Sesión U1 · Pablo Huidobro · 17/10/2026
+## Sesión U2 · Pablo Huidobro · 17/10/2026
 
 **Foco:** comprensión de las proporciones, el mapa y el sonido.
 
@@ -71,7 +71,7 @@ Evaluar la incorporación de voces diferenciadas por registro y reforzar las exp
 
 ---
 
-## Sesión U2 · Jacinta Velao · 18/10/2026
+## Sesión U3 · Jacinta Velao · 18/10/2026
 
 **Foco:** descubrir las interacciones, sobre todo en Carreras.
 
@@ -120,13 +120,13 @@ Agregar indicaciones de interacción y señales visuales, como cambios al pasar 
 
 | Hallazgo | Evidencia | Cambio en V4 |
 |---|---|---|
-| No se sabe qué sonido es cada grupo | U1 04:00–06:00; también R1 | Leyenda "coro grave = hombres, agudo = mujeres" y paneo igual al gráfico |
-| La comparación hombres/mujeres pide más contraste | U2 06:00; también R1 | Paleta amarillo/lavanda (antes dos morados) |
-| No se entiende qué significa cada tono del mapa | U1 01:00; sesión A | Leyenda del mapa con "más hombres / más mujeres" |
-| No se descubre que las áreas se abren | U2 03:00–05:30; sesión A | Pista "Haz clic en un área…" y "Clic para ver sus carreras" en el tooltip |
-| Con el mapa cuesta ver cuánto cambió entre años | U1 03:00 | No cambiamos el mapa: la lectura exacta está en el gráfico de puntos de al lado, y por eso no lo agrandamos (ver R2) |
+| No se sabe qué sonido es cada grupo | U2 04:00–06:00; también R1 | Leyenda "coro grave = hombres, agudo = mujeres" y paneo igual al gráfico |
+| La comparación hombres/mujeres pide más contraste | U3 06:00; también R1 | Paleta amarillo/lavanda (antes dos morados) |
+| No se entiende qué significa cada tono del mapa | U2 01:00; U1 | Leyenda del mapa con "más hombres / más mujeres" |
+| No se descubre que las áreas se abren | U3 03:00–05:30; U1 | Pista "Haz clic en un área…" y "Clic para ver sus carreras" en el tooltip |
+| Con el mapa cuesta ver cuánto cambió entre años | U2 03:00 | No cambiamos el mapa: la lectura exacta está en el gráfico de puntos de al lado, y por eso no lo agrandamos (ver R2) |
 
-**Lo que no hicimos:** U2 sugirió que las áreas cambien de color al pasar el mouse (05:30). Ya se
+**Lo que no hicimos:** U3 sugirió que las áreas cambien de color al pasar el mouse (05:30). Ya se
 ponen en negrita y aparece el tooltip; preferimos no sumar otro color, porque el color está reservado
 para hombres y mujeres.
 
