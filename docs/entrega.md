@@ -204,6 +204,22 @@ eligiendo carrera y quienes diseñan políticas de fomento a mujeres en STEM.
 **Efecto en el proceso:** en qué transición (ej. V3 → V4) se incorporó lo aprendido — o se decidió
 no incorporarlo, y por qué.
 -
+### Evaluación de V3
+
+Se recopiló retroalimentación sobre la comprensión del mensaje, la comparación visual entre hombres y mujeres, la interpretación sonora y la descubribilidad de las interacciones.
+
+**Registro:** [Retroalimentación de V3](evaluacion_usuarios/ronda_1.md)
+
+**Hallazgos principales (incluido el sonido):**
+
+- La sonificación requiere una correspondencia más clara entre los sonidos y las variables de género.
+- La comparación visual entre hombres y mujeres necesita mayor énfasis.
+- El mapa y las diferencias de color facilitan la interpretación, aunque se requiere mayor contexto inicial.
+- La selección de carreras no resulta suficientemente evidente.
+
+**Efecto en el proceso (V3 → V4):**
+
+Se propone explorar una sonificación basada en voces corales diferenciadas por registro, reforzar la comparación visual entre hombres y mujeres y agregar indicaciones que faciliten el descubrimiento de las interacciones en la pestaña de carreras. También se busca conservar el mapa como recurso central, mejorando su contextualización.
 
 ---
 
