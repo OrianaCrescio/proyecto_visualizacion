@@ -255,7 +255,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 | Ronda | Fecha | Versión | Participantes | Registro |
 |---|---|---|---|---|
-| 1 | 17 y 18/10/2026 | V3 | Andrés Rodríguez, Pablo Huidobro (U1), Jacinta Velao (U2) | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
+| 1 | 17 y 18/10/2026 | V3 | Andrés Rodríguez (egresado de Ing. en TI, emprendimiento en IA), Pablo Huidobro (U1) y Jacinta Velao (U2), estudiantes de carreras no relacionadas | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
 | 2 | 22/10/2026 | V4 | [COMPLETAR] | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
 
 **Ronda 1 (V3).** Thinking aloud de ~8 minutos con U1 y U2, sin explicarles la interfaz; con Andrés

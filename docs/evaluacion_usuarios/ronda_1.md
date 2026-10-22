@@ -7,7 +7,7 @@
 
 | Sesión | Fecha | Participante | Perfil | Familiaridad con visualizaciones |
 |---|---|---|---|---|
-| A | 17/10/2026 | Andrés Rodríguez | [COMPLETAR perfil] | [COMPLETAR] |
+| A | 17/10/2026 | Andrés Rodríguez | Egresado de Ingeniería en TI, lanzando un emprendimiento relacionado con IA | Perfil técnico |
 | U1 | 17/10/2026 | Pablo Huidobro | Estudiante universitario de una carrera no relacionada con visualización de datos | Media |
 | U2 | 18/10/2026 | Jacinta Velao | Estudiante universitaria sin experiencia en visualizaciones interactivas | Baja |
 
