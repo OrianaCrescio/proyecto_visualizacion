@@ -22,6 +22,7 @@ Para guardar una versión nueva al cerrarla: copiar la carpeta `pagina/` complet
 Para verla en local hay que usar el servidor (`python3 -m http.server 8000` desde la raíz del repo) y abrir
 `http://localhost:8000/docs/evidencia/v2/pagina/`; con doble clic no carga los datos.
 
-**Barra de versiones (22/10):** a cada copia `vN/pagina/index.html` se le agregó solo una barra arriba
-para saltar entre V1, V2, V3 y V4 sin usar el botón "atrás" del navegador (bloque `VNAV` en el HTML).
-El resto de cada versión quedó como estaba.
+**Barra de versiones (22/10):** a las copias de V1, V2 y V3 se les agregó solo una barra arriba
+para saltar entre versiones sin usar el botón "atrás" del navegador (bloque `VNAV` en el HTML).
+El resto de cada versión quedó como estaba. La V4 (la página actual) no lleva barra: los links a
+las versiones anteriores están en el pie de cada pestaña.
