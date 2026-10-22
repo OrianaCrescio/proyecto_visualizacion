@@ -222,7 +222,7 @@ function initializeVisualization(ordenMapa) {
     const xAxis = d3
         .axisTop(xScale)
         .tickValues(
-            d3.range(0, 1.01, 0.1)
+            [0, 0.25, 0.5, 0.75, 1]   // V4: menos marcas (R2: el eje se veía recargado)
         )
         .tickFormat(
             d3.format(".0%")
@@ -237,6 +237,15 @@ function initializeVisualization(ordenMapa) {
             `translate(0, ${margin.top - 25})`
         )
         .call(xAxis);
+
+    // V4 (R2): dejar explícito que los números del eje son % de MUJERES;
+    // "← hombres / mujeres →" solo indica hacia dónde se inclina cada región.
+    svg.append("text")
+        .attr("class", "titulo-eje")
+        .attr("x", xScale(0.5))
+        .attr("y", 20)
+        .attr("text-anchor", "middle")
+        .text("% de mujeres");
 
     svg.append("text")
         .attr("class", "leyenda-eje hombres")

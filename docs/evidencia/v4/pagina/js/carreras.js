@@ -5,8 +5,8 @@
 // Cada fila es un área del conocimiento. La barra completa es el 100 % de
 // su matrícula: hombres desde la izquierda y mujeres desde la derecha, así
 // ambos grupos se ven explícitamente (comentario R1). La línea punteada es
-// la paridad y la marca negra indica dónde estaba la división en 2007, para
-// comparar el inicio con el año elegido.
+// la paridad. V4: el tramo que cambió desde 2007 va achurado (antes era una
+// marca negra que el grupo 10 no entendió en la R2).
 //
 // Al hacer clic en un área se abren sus carreras (details on demand).
 
@@ -87,6 +87,18 @@ const Carreras = (() => {
                 .attr("text-anchor", "end")
                 .text("mujeres →");
 
+            // Achurado del cambio desde 2007: rayas blancas sobre el color del segmento.
+            // Un id por contenedor, porque el SVG de áreas se oculta al abrir un área.
+            const idAchurado = `achurado-${contenedor.attr("id")}`;
+            const patron = svg.append("defs").append("pattern")
+                .attr("id", idAchurado)
+                .attr("patternUnits", "userSpaceOnUse")
+                .attr("width", 7).attr("height", 7)
+                .attr("patternTransform", "rotate(45)");
+            patron.append("line")
+                .attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 7)
+                .attr("stroke", "white").attr("stroke-width", 3).attr("stroke-opacity", 0.85);
+
             svg.append("g").attr("class", "filas");
 
             svg.append("line").attr("class", "parity-halo");
@@ -129,10 +141,9 @@ const Carreras = (() => {
                 f.append("rect").attr("class", "seg-mujeres")
                     .attr("x", d => split(d) + GAP / 2)
                     .attr("width", d => Math.max(0, x(1) - split(d) - GAP / 2));
+                f.append("rect").attr("class", "cambio");
                 f.append("text").attr("class", "valor valor-h");
                 f.append("text").attr("class", "valor valor-m");
-                f.append("line").attr("class", "marca-base-halo");
-                f.append("line").attr("class", "marca-base");
                 f.append("text").attr("class", "total");
                 return f;
             });
@@ -199,13 +210,16 @@ const Carreras = (() => {
             .text(d => fmtPct(d.actual.propMujeres))
             .style("display", d => x(1) - split(d) < 36 ? "none" : null);
 
-        // Marca de 2007 (antes vs. ahora)
-        g.selectAll(".marca-base-halo, .marca-base")
+        // Cambio desde 2007 (antes vs. ahora): tramo achurado entre la división de
+        // 2007 y la del año elegido. Queda dentro del segmento del grupo que ganó terreno.
+        const splitBase = d => d.base ? x(1 - d.base.propMujeres) : split(d);
+        g.select(".cambio")
+            .attr("y", 6).attr("height", barH)
+            .attr("fill", `url(#achurado-${contenedor.attr("id")})`)
             .style("display", d => d.base && anioActual !== ANIO_BASE ? null : "none")
-            .attr("y1", 3).attr("y2", barH + 9)
             .transition().duration(300)
-            .attr("x1", d => d.base ? x(1 - d.base.propMujeres) : 0)
-            .attr("x2", d => d.base ? x(1 - d.base.propMujeres) : 0);
+            .attr("x", d => Math.min(split(d), splitBase(d)))
+            .attr("width", d => Math.abs(split(d) - splitBase(d)));
 
         g.select(".total")
             .attr("x", x(1) + 12)

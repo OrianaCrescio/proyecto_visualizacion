@@ -77,10 +77,10 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 ## 4. R1 · Revisión con el equipo docente
 
 - **Fecha:** 29/09/2026, sobre la V1 publicada en GitHub Pages.
-- **Qué se discutió:** (1) el sonido no deja saber qué es "más" o "menos": comparar contra una nota
-  fija de 220 Hz exige oído absoluto, y no distingue mujeres de hombres; (2) la V1 solo muestra el % de
-  mujeres, así que la relación con los hombres queda implícita; (3) conviene probar alternativas para
-  esa comparación, y la página puede tener más de un gráfico.
+- **Qué se discutió:** (1) qué es el sonido y cómo se diferencia entre mujeres y hombres; se sugirió
+  cambiar el timbre según el grupo. Nuestra nota contra 220 Hz exigía oído absoluto y no separaba a
+  los dos grupos; (2) especificar visualmente la comparación entre mujeres y hombres, porque la V1
+  solo muestra el % de mujeres; (3) evaluar distintas alternativas, sobre todo para esa comparación.
 - **Qué adoptamos:** un timbre distinto para cada grupo, para comparar dos voces entre sí en vez de una
   contra una referencia abstracta; hacer explícita la comparación hombres/mujeres; varios gráficos que
   cuenten una sola historia (regiones → carreras), sumando los datos por carrera, que son el centro del
@@ -135,13 +135,18 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 ## 6. R2 · Revisión entre pares
 
-- **Fecha / grupo que nos revisó:** [COMPLETAR fecha, entre el 08 y el 12/10] · Grupo [COMPLETAR]
-- **Qué se discutió:** [COMPLETAR 2–3 observaciones concretas que nos hicieron]
-- **Qué adoptamos y por qué:** [COMPLETAR, idealmente ligado a los cambios de V3: escala del mapa,
-  puntos coloreados por grupo mayoritario, Play en Carreras, líneas de enlace que se cruzaban]
-- **Qué descartamos y por qué:** [COMPLETAR]
-- **Cómo se ve en V3:** ver sección 7. Los primeros ajustes post-revisión están en el commit `efc7345`
-  ("mini cambios post revisión entre grupos", 12/10).
+- **Fecha / grupo que nos revisó:** [COMPLETAR fecha] · Grupo 10, sobre la V2.
+- **Qué se discutió:** entendieron el mensaje y valoraron el mapa de calor, el contraste azul/naranja y
+  el % escrito en cada barra. Pidieron: letras más grandes en el gráfico de regiones; un mapa más grande y
+  un gráfico de puntos más angosto; simplificar el eje (números + "hombres/mujeres" en los extremos
+  confundía); un indicador más visible de que las áreas se abren; y cambiar la marca negra de 2007,
+  que no se entendía, por un achurado del tramo que cambió. Del sonido dijeron que se vuelve más agudo
+  cuando sube el % de mujeres: eso no es lo que codifica (son dos coros), y lo tomamos como hallazgo.
+- **Qué adoptamos:** en V3, letras más grandes y el indicador ▸ en cada área. En V4, el eje con menos
+  marcas y el título "% de mujeres", el achurado en vez de la marca negra, y la leyenda del sonido.
+- **Qué descartamos:** agrandar el mapa a costa del gráfico de puntos. El área de cada región pesa más
+  que su matrícula (Aysén se ve enorme con pocos estudiantes); la comparación precisa es la posición.
+- **Cómo se ve en V3 y V4:** secciones 7 y 9. Primeros ajustes en `efc7345` ("mini cambios post revisión entre grupos").
 
 ---
 
@@ -158,8 +163,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - Escala del mapa ajustada de 30–70 % a 35–65 %.
 - Las líneas que unen mapa y etiquetas se curvan distinto en Arica, Tarapacá, Araucanía y Los Ríos para
   no cruzarse.
-- Botón Play también en la pestaña Carreras (2007–2026).
-- Dot plot más alto (650 → 760 px) y etiquetas de eje más grandes.
+- Carreras: botón Play (2007–2026) e indicador ▸ grande delante de cada área.
+- Dot plot más alto (650 → 760 px) y etiquetas más grandes.
 - Nueva línea gráfica: banda con el título arriba y pie abajo, tipografías Martian Mono (títulos,
   año, botones) e Inter (textos y valores).
 - Paleta: de azul/naranja a azul noche (hombres) y lavanda (mujeres).
@@ -171,12 +176,14 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
   gris de la paridad; con 35–65 % se usa todo el rango de color sin saturar ningún extremo.
 - Enlaces: cuatro curvas se cruzaban en el norte y en el sur, y no se sabía qué región iba con qué
   fila (Gestalt, continuidad).
+- R2 (grupo 10): las etiquetas del gráfico de regiones se leían con dificultad, y no era evidente que
+  las áreas se abrían. De ahí el gráfico más alto, las letras más grandes y el ▸.
 - Play en Carreras: la misma interacción debía funcionar igual en las dos pestañas (consistencia).
 - Tipografía y banda: separar jerarquías. Título y controles con una fuente, datos con otra más
   legible a tamaño chico.
 - Paleta: [COMPLETAR/VERIFICAR, Antonia: por qué dejamos el azul/naranja. Ej.: buscábamos una
-  identidad visual de un solo tono para toda la página.] Este cambio lo revertimos en parte en V4
-  (ver sección 9): los dos morados resultaron demasiado parecidos.
+  identidad visual de un solo tono para toda la página.] Ojo: el grupo 10 había valorado el
+  contraste azul/naranja, y con dos morados lo perdimos. Lo recuperamos en V4 (sección 9).
 
 **Qué se descartó**
 - Probamos dos líneas gráficas antes de esta (commits `fe04643` "probando colores" y `44dc430` "prueba
@@ -187,11 +194,12 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 ## 8. R3 · Revisión final con el equipo docente
 
 - **Fecha:** [COMPLETAR]
-- **Qué se discutió:** [COMPLETAR]
-- **Qué adoptamos y por qué:** [COMPLETAR]
-- **Qué descartamos y por qué:** [COMPLETAR]
-- **Cómo se ve en V4:** [COMPLETAR. Si en la R3 se habló del sonido o del color, conectar aquí con
-  los cambios de la sección 9.]
+- **Qué se discutió:** los ayudantes revisaron la evolución desde V1 y no hicieron observaciones
+  de fondo ni pidieron cambios concretos.
+- **Qué decidimos:** sin indicaciones nuevas, basamos los ajustes finales en lo que sí teníamos
+  pendiente: lo que el grupo 10 dijo en la R2 y no habíamos resuelto en V3, y las evaluaciones con
+  usuarios (sección 10).
+- **Cómo se ve en V4:** ver sección 9. Cada cambio de V4 indica si viene de la R2 o de los usuarios.
 
 ---
 
@@ -204,40 +212,34 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | **Evidencia** | [capturas](evidencia/v4/fotos/) · [COMPLETAR video V4] |
 
 **Qué cambió respecto a V3**
-- Paleta: los hombres pasan del azul noche a amarillo mostaza (`#e0a100`); las mujeres mantienen la
-  lavanda de V3 (`#8d67b6`). Mapa divergente amarillo → casi blanco (paridad) → lavanda.
-- Títulos, pestañas y slider pasan a un tono neutro oscuro; la banda del título y el pie quedan en una lavanda
-  más oscura (`#6f4c9b`).
-- Texto oscuro sobre el amarillo y borde en los puntos amarillos (el amarillo solo contra blanco no se lee).
-- Sonido: el coro de hombres suena a la izquierda y el de mujeres a la derecha, igual que en los gráficos.
-- Leyenda del sonido explícita: "coro grave = hombres, coro agudo = mujeres, el que es mayoría suena más fuerte".
-- Pista visible "Haz clic en un área para ver sus 15 carreras" y "Clic para ver sus carreras" en el tooltip.
-- La leyenda del mapa dice "más hombres" y "más mujeres" en los extremos.
+- Paleta: hombres en amarillo mostaza (`#e0a100`), mujeres en la lavanda de V3 (`#8d67b6`); mapa
+  amarillo → casi blanco (paridad) → lavanda. Banda del título en lavanda oscura, controles en neutro.
+- Carreras: la marca negra de 2007 se reemplaza por un achurado del tramo que cambió desde 2007.
+- Regiones: eje con 5 marcas (antes 11) y título "% de mujeres".
+- Sonido: hombres a la izquierda y mujeres a la derecha (en V3 estaba al revés), y leyenda explícita
+  ("coro grave = hombres, agudo = mujeres, el que es mayoría suena más fuerte").
+- Pista "Haz clic en un área…" bajo el título y en el tooltip; el mapa rotula "más hombres / más mujeres".
 
 **Por qué**
-- Usuarios (ronda 1, sección 10): pidieron que la comparación hombres/mujeres se notara más. En V3 los
-  dos colores eran morados y se diferenciaban casi solo por luminosidad. Amarillo y morado difieren en
-  tono y en luminosidad a la vez, y el contraste se mantiene con daltonismo rojo-verde, porque va por
-  el eje azul-amarillo. Tampoco cae en rosado/celeste.
-- Títulos y controles en tono neutro para que el color de los datos destaque. La banda del título la
-  dejamos en lavanda (probamos un tono oscuro y no nos gustó): funciona como identidad de la página y
-  coincide con el mensaje, que está centrado en las mujeres.
-- Contraste medido: texto negro sobre amarillo 8,3:1 y blanco sobre lavanda 4,4:1. Para textos sueltos
-  sobre blanco usamos versiones más oscuras de los dos colores.
-- Sonido: en V3 el paneo estaba al revés (hombres a la derecha) aunque en pantalla están a la
-  izquierda. Lo alineamos para que oído y vista digan lo mismo.
-- Usuarios: preguntaron cómo distinguir de oído a hombres y mujeres, y no notaron que las áreas se
-  podían abrir. Con la leyenda del sonido y la pista de clic, ninguna de las dos cosas depende de que
-  alguien la explique (heurísticas "el sonido no se entiende sin explicación" y "la interacción no es
-  descubrible").
+- Color (usuarios ronda 1 y R2): la comparación hombres/mujeres tenía que notarse más, y el grupo 10
+  había valorado el contraste de V2 que perdimos con dos morados. Amarillo y lavanda difieren en tono
+  y luminosidad, el contraste se mantiene con daltonismo rojo-verde y no cae en rosado/celeste. Texto
+  negro sobre amarillo 8,3:1; en textos sueltos usamos versiones más oscuras de ambos colores.
+- Achurado (R2): el grupo 10 no entendió qué era la barra negra. El achurado marca el área que ganó
+  (o perdió) cada grupo: el cambio se lee como longitud en la misma barra, no como una marca aparte.
+- Eje (R2): números cada 10 % más "hombres/mujeres" confundían, porque no decía de quién eran los %.
+  Con el título y menos marcas queda claro; no lo eliminamos, porque sin números no se pueden leer
+  diferencias de 5 puntos entre regiones.
+- Sonido (R2 y usuarios): el grupo 10 creyó que el tono subía con el % de mujeres y los usuarios no
+  sabían qué coro era quién. Ahora la leyenda lo dice y el lado del sonido coincide con el del gráfico.
+- Pista de clic (R2 y usuarios): el ▸ de V3 no bastó para que la interacción fuera descubrible.
 
 **Qué se descartó**
-- [VERIFICAR] La evaluación propuso "voces corales diferenciadas por registro". El coro sintético
-  grave/agudo ya hacía eso, así que no lo rehicimos: el problema era que nadie sabía qué voz era
-  quién, y eso se resolvió con la leyenda y el paneo.
-- Amarillo claro puro (`#f2b705`): con 1,8:1 contra blanco los puntos chicos desaparecían.
-- Un morado más oscuro (`#5b2a86`) para las mujeres: daba más contraste, pero lo probamos y preferimos
-  la lavanda de V3, que ya identificaba a las mujeres; bastaba con cambiar el color de los hombres.
+- Agrandar el mapa y achicar el gráfico de puntos (R2): ver R2; el tamaño de las regiones engaña.
+- Quitar el sonido (el grupo 10 sugirió que aporta poco para un porcentaje): el problema era que no
+  se entendía qué codificaba, no el sonido en sí, así que lo aclaramos en vez de sacarlo.
+- Un morado más oscuro (`#5b2a86`) para las mujeres: lo probamos y preferimos la lavanda de V3.
+- Amarillo claro (`#f2b705`): con 1,8:1 contra blanco los puntos chicos desaparecían.
 
 **Balance del recorrido**
 - Mejoró: el mensaje pasó de "las regiones cruzaron el 50 %" a "son mayoría, pero no en todas las
@@ -263,8 +265,9 @@ tenemos bitácora con tiempos ni citas literales, y lo decimos así. Hallazgos:
 - El mapa y los colores ayudaron, aunque al principio no se entendía qué significaba cada tono.
 - Nadie descubrió solo que las áreas se podían abrir para ver carreras.
 
-Efecto (V3 → V4): los cuatro hallazgos se tradujeron en cambios de V4 (sección 9): paleta amarillo/morado,
-leyenda del sonido y paneo coherente, extremos rotulados en el mapa, y pista de clic.
+Efecto (V3 → V4): los cuatro hallazgos se tradujeron en cambios de V4 (sección 9): paleta amarillo/lavanda,
+leyenda del sonido y paneo coherente, extremos rotulados en el mapa, y pista de clic. Coinciden con
+lo que había dicho el grupo 10 en la R2, lo que nos dio más confianza para priorizarlos.
 
 **Ronda 2 (V4), thinking aloud.** [COMPLETAR después de la sesión, con el formato de `ronda_2.md`.]
 - Hallazgos principales (incluido el sonido): [COMPLETAR]
@@ -275,10 +278,26 @@ leyenda del sonido y paneo coherente, extremos rotulados en el mapa, y pista de 
 
 ## 11. Feedback al otro grupo (R2)
 
-**El proyecto evaluado:** [COMPLETAR: grupo, mensaje de su visualización y en qué estado estaba]
+**El proyecto evaluado:** grupo 10. Su visualización muestra cuánto saltaría una persona en la
+gravedad de cada planeta del sistema solar, para público general. Tenía tres vistas (órbitas, saltos
+alineados y detalle por planeta), tooltip con la gravedad, clic para hacer zoom en un planeta y un
+sonido que acompaña el salto.
 
-**El feedback que dimos:** [COMPLETAR: observaciones concretas ancladas en principios del curso. Ej. de
-formato: "el eje truncado exagera la diferencia entre categorías", no "se ve raro".]
+**El feedback que dimos:**
+- Vista general: responde la pregunta, pero satura. Con personas y órbitas en movimiento no se puede
+  cuantificar en qué planeta se salta más; los planetas se "topan" (la Luna con la Tierra).
+- Ejes: en la vista alineada falta un eje vertical rotulado; para comparar la Tierra con Neptuno hay
+  que leer los metros. El eje logarítmico por distancia al Sol sí nos pareció bien elegido.
+- Contexto: no se explica con qué parámetros se calcula el salto (masa, altura de la persona) ni desde
+  dónde se mide: si 1,27 m en la Tierra va del suelo a la cabeza, la persona mediría menos de 1,27 m.
+  Esa confusión hace dudar de las equivalencias ("3 pisos").
+- Color y minimalismo: la persona blanca se pierde cuando los planetas están juntos, y las líneas
+  punteadas de tope en las órbitas no ayudan a comparar.
+- Sonido: ayuda a sentir cuánto dura el salto, pero se corta arriba y no acompaña la caída.
+- Conservar la vista alineada y la de planeta (buenas leyendas); repensar la de órbitas, que muestra la
+  distribución del sistema solar pero no responde la pregunta.
 
-**Lo que nos llevamos para nuestro proyecto:** [COMPLETAR: errores suyos que reconocimos en el nuestro,
-ideas que adaptamos citando al grupo, decisiones que salieron confirmadas]
+**Lo que nos llevamos para nuestro proyecto:** [VERIFICAR] Pedirles ejes para cuantificar nos confirmó
+mantener el eje fijo 0–100 % y la línea de paridad, aunque en V4 bajamos sus marcas de 11 a 5 (también
+por la R2). Ver que sus líneas de tope no servían para comparar nos hizo revisar qué marcas de las
+nuestras se entendían: la de 2007 no, y la cambiamos por el achurado.

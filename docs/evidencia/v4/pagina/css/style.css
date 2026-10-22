@@ -805,3 +805,32 @@ h3,
 }
 .leyenda-mapa .extremo.hombres { fill: var(--color-hombres-texto); }
 .leyenda-mapa .extremo.mujeres { fill: var(--color-mujeres-texto); }
+
+/* Leyenda: muestra del achurado de cambio desde 2007 */
+.leyenda .achurado {
+    width: 22px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    background: repeating-linear-gradient(45deg,
+        var(--color-mujeres) 0 4px, rgba(255, 255, 255, 0.85) 4px 7px);
+}
+
+.fila .cambio {
+    pointer-events: none;
+}
+
+#chart .titulo-eje {
+    font-size: 19px;
+    fill: var(--color-secundario);
+}
+
+/* Que los % se lean aunque caigan sobre el achurado: contorno del color del segmento */
+.fila .valor-h,
+.fila .valor-m {
+    paint-order: stroke;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+}
+.fila .valor-h { stroke: var(--color-hombres); }
+.fila .valor-m { stroke: var(--color-mujeres); }
