@@ -50,7 +50,7 @@ sin explicación**: cada uno nace de una revisión, de usuarios, de un principio
 
 | Versión | Fecha | Tag | Resumen |
 |---|---|---|---|
-| V1 | | `v1` | Dot plot de % de mujeres por región (1984–2025), slider + play, tooltip, sonificación de la paridad |
-| V2 | | `v2` | |
-| V3 | | `v3` | |
-| V4 | | `v4` | |
+| V1 | 28/09/2026 | `v1` | Dot plot de % de mujeres por región (1984–2025), slider + play, tooltip y sonificación de la paridad |
+| V2 | 07/10/2026 | `v2` | Mapa coroplético junto al dot plot; pestaña de carreras con barras hombres/mujeres, carreras desplegables, referencia de 2007 y sonificación de dos coros |
+| V3 | 13/10/2026 | `v3` | Puntos coloreados según mayoría, escala del mapa ajustada, gráficos más legibles, Play en carreras y nueva línea gráfica azul noche-lavanda |
+| V4 | 22/10/2026 | `v4` | Amarillo intenso y morado profundo, contornos visibles en el mapa y achurado más notorio del cambio desde 2007; ajustes de eje, sonido y pistas de interacción |

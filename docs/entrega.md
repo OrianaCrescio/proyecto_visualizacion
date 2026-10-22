@@ -1,7 +1,7 @@
 # Entrega 1 · Documento de proceso · IIC2026
 
 > Lo marcado con **[COMPLETAR]** son datos que solo tenemos nosotras (apuntes de R2 y R3, hashes,
-> links a video). Buscar `[COMPLETAR]` antes de entregar y borrar esta nota.
+> links a video). Buscar `[COMPLETAR]` antes de entregar y borrar esta nota. lo mismo con **[VERIFICAR]**
 
 ---
 
@@ -12,7 +12,12 @@
 - **GitHub Pages:** https://orianacrescio.github.io/proyecto_visualizacion/
 - **Repositorio:** https://github.com/OrianaCrescio/proyecto_visualizacion
 - **Videos de evidencia (OneDrive):** https://uccl0-my.sharepoint.com/:f:/r/personal/antonia_ramos_uc_cl/Documents/InfoVis?d=w5e1430c7df5c4d24932cc2f25ed17efd&csf=1&web=1&e=zBr1ej
-- **Video final (V4):** [COMPLETAR link de YouTube]
+- **Video final (V4):** [YouTube](https://youtu.be/LmSdQFqW3WI)
+
+> YouTube redujo la definición de los videos. Para verlos con mayor nitidez, recomendamos usar las
+> copias originales incluidas en el repositorio: [V1](evidencia/v1/videos/evidenciaV1.mp4) ·
+> [V2](evidencia/v2/videos/evidenciaV2.mp4) · [V3](evidencia/v3/videos/V3.mp4) ·
+> [V4](evidencia/v4/videos/V4.mp4). Son los mismos videos.
 
 ---
 
@@ -48,8 +53,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | Campo | |
 |---|---|
 | **Versión / fecha** | V1 · 28/09/2026 |
-| **Commit / tag** | tag `v1` (commit `0ba61f3`, "Release V1 to main") · [copia navegable](evidencia/v1/pagina/) |
-| **Evidencia** | [capturas](evidencia/v1/fotos/) · [video V1](evidencia/v1/videos/evidenciaV1.mp4) |
+| **Commit / tag** | tag `v1` → commit `0ba61f3` ("Release V1 to main") · [copia navegable](evidencia/v1/pagina/) |
+| **Evidencia** | [capturas](evidencia/v1/fotos/) · [video V1](evidencia/v1/videos/evidenciaV1.mp4) · [video V1 en YouTube](https://youtu.be/JL0Or8l1i20) |
 
 **Decisiones iniciales**
 - Mensaje: cómo cambió la participación de las mujeres en la educación superior, región por región.
@@ -98,8 +103,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | Campo | |
 |---|---|
 | **Versión / fecha** | V2 · 07/10/2026 |
-| **Commit / tag** | commit `b8a4d48` ("agregar visualizaciones por pestañas y sonificación interactiva") · [copia navegable](evidencia/v2/pagina/) |
-| **Evidencia** | [video V2](evidencia/v2/videos/evidenciaV2.mp4) · [COMPLETAR capturas en `evidencia/v2/fotos/`] |
+| **Commit / tag** | tag `v2` → commit `b8a4d48` ("agregar visualizaciones por pestañas y sonificación interactiva") · [copia navegable](evidencia/v2/pagina/) |
+| **Evidencia** | [capturas](evidencia/v2/fotos/) · [video V2](evidencia/v2/videos/evidenciaV2.mp4) · [video V2 en YouTube](https://youtu.be/jmW569YPU7U) |
 
 **Qué cambió respecto a V1**
 - Dos pestañas: "Regiones" (mapa + dot plot) y "Carreras" (áreas del conocimiento 2007–2026).
@@ -135,7 +140,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 ## 6. R2 · Revisión entre pares
 
-- **Fecha / grupo que nos revisó:** [COMPLETAR fecha] · Grupo 10, sobre la V2.
+- **Fecha / grupo que nos revisó:** 08/10/2026 · Grupo 10, sobre la V2.
 - **Qué se discutió:** entendieron el mensaje y valoraron el mapa de calor, el contraste azul/naranja y
   el % escrito en cada barra. Pidieron: letras más grandes en el gráfico de regiones; un mapa más grande y
   un gráfico de puntos más angosto; simplificar el eje (números + "hombres/mujeres" en los extremos
@@ -155,8 +160,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | Campo | |
 |---|---|
 | **Versión / fecha** | V3 · 13/10/2026 |
-| **Commit / tag** | commit `6e7fcd5` ("Mejora legibilidad de gráficos y enlaces entre regiones"); antes `efc7345`, `fe04643`, `44dc430` · [copia navegable](evidencia/v3/pagina/) |
-| **Evidencia** | [capturas](evidencia/v3/fotos/) · [video V3](evidencia/v3/videos/V3.mp4) |
+| **Commit / tag** | tag `v3` → commit `6e7fcd5` ("Mejora legibilidad de gráficos y enlaces entre regiones"); antes `efc7345`, `fe04643`, `44dc430` · [copia navegable](evidencia/v3/pagina/) |
+| **Evidencia** | [capturas](evidencia/v3/fotos/) · [video V3](evidencia/v3/videos/V3.mp4) · [video V3 en YouTube](https://youtu.be/C_Zf5Lmu2Zs) |
 
 **Qué cambió respecto a V2**
 - Los puntos del dot plot (y el de Chile) toman el color del grupo que es mayoría ese año.
@@ -181,9 +186,10 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - Play en Carreras: la misma interacción debía funcionar igual en las dos pestañas (consistencia).
 - Tipografía y banda: separar jerarquías. Título y controles con una fuente, datos con otra más
   legible a tamaño chico.
-- Paleta: [COMPLETAR/VERIFICAR, Antonia: por qué dejamos el azul/naranja. Ej.: buscábamos una
-  identidad visual de un solo tono para toda la página.] Ojo: el grupo 10 había valorado el
-  contraste azul/naranja, y con dos morados lo perdimos. Lo recuperamos en V4 (sección 9).
+- Paleta: cambiamos el azul y el naranja por dos tonos de morado para mantener una identidad visual
+  coherente y usar el morado como símbolo de la lucha por la igualdad. Con ese cambio perdimos el
+  contraste entre grupos que el grupo 10 había valorado; retomamos esa observación en V4 con una
+  paleta de mayor contraste (sección 9).
 
 **Qué se descartó**
 - Probamos dos líneas gráficas antes de esta (commits `fe04643` "probando colores" y `44dc430` "prueba
@@ -193,7 +199,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 
 ## 8. R3 · Revisión final con el equipo docente
 
-- **Fecha:** [COMPLETAR]
+- **Fecha:** 13/10/2026
 - **Qué se discutió:** los ayudantes revisaron la evolución desde V1 y no hicieron observaciones
   de fondo ni pidieron cambios concretos.
 - **Qué decidimos:** sin indicaciones nuevas, basamos los ajustes finales en lo que sí teníamos
@@ -208,8 +214,8 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | Campo | |
 |---|---|
 | **Versión / fecha** | V4 · 22/10/2026 |
-| **Commit / tag** | [COMPLETAR hash] · tag `v4` · [copia navegable](evidencia/v4/pagina/) |
-| **Evidencia** | [capturas](evidencia/v4/fotos/) · [COMPLETAR video V4] |
+| **Commit / tag** | tag `v4` → commit `cfaad8d` ("docs: agrega evidencia de la versión 4") · [copia navegable](evidencia/v4/pagina/) |
+| **Evidencia** | [capturas](evidencia/v4/fotos/) · [video V4 en YouTube](https://youtu.be/LmSdQFqW3WI) |
 
 **Qué cambió respecto a V3**
 - Paleta: hombres en amarillo mostaza (`#e0a100`), mujeres en la lavanda de V3 (`#8d67b6`); mapa
