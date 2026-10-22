@@ -834,3 +834,9 @@ h3,
 }
 .fila .valor-h { stroke: var(--color-hombres); }
 .fila .valor-m { stroke: var(--color-mujeres); }
+
+/* Links a versiones anteriores al pie de cada pestaña */
+.fuente.versiones {
+    margin-top: 4px;
+    font-weight: 600;
+}
