@@ -15,8 +15,9 @@
 
 ## Sesión U1 · Andrés Rodríguez · 17/10/2026
 
-[VERIFICAR] De esta sesión quedaron los comentarios, no la bitácora con tiempos. Las dudas sobre
-el sonido y la comparación visual que aparecían junto a estos comentarios vienen de la R1.
+De esta sesión se conservaron comentarios resumidos, pero no una bitácora con tiempos. Por ello, no se
+presentan como citas literales ni se atribuyen a esta sesión las observaciones sobre el sonido y la
+comparación visual que corresponden a la R1.
 
 | Aspecto | Comentario | Hallazgo |
 |---|---|---|

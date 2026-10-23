@@ -278,7 +278,7 @@ incorporamos, con su motivo, está en `ronda_1.md`. Estos hallazgos coinciden co
 **Ronda 2 (V4).** Se realizaron tres sesiones *thinking aloud* de aproximadamente 8 minutos, con computador y audífonos, observadas por Florencia Godoy. Participaron Amelia Pinilla, Clemente Toledo y Esteban Pavez, evaluando la comprensión y navegación de V4.
 
 - Hallazgos principales (incluido el sonido): U1 comprendió la visualización y valoró su interactividad, aunque tardó en descubrir la segunda pestaña. U2 destacó su simplicidad y sugirió mejorar el scroll y la primera pantalla. U3 tuvo dificultades iniciales de navegación, pero comprendió la información tras recibir orientación. No se recopilaron observaciones específicas sobre el sonido.
-- Efecto en el proceso: Las observaciones de V4 se integraron parcialmente, buscando mejorar la navegación, la visibilidad de las pestañas y la claridad del contenido mediante ajustes acordes al tiempo y las posibilidades del proyecto.
+- Efecto en el proceso: Las observaciones de V4 quedaron registradas como mejoras a futuro: aumentar la visibilidad de la segunda pestaña, revisar la primera pantalla y el scroll, y hacer más accesibles las indicaciones iniciales. No se implementaron en V4 ni se atribuyen cambios de la versión final a esta ronda.
 
 ---
 
@@ -303,4 +303,4 @@ sonido que acompaña el salto.
 - Conservar la vista alineada y la de planeta (buenas leyendas); repensar la de órbitas, que muestra la
   distribución del sistema solar pero no responde la pregunta.
 
-**Lo que nos llevamos para nuestro proyecto:** La retroalimentación del grupo 10 nos ayudó a dar mayor protagonismo al mapa, mejorar el contraste de colores entre hombres y mujeres e incorporar triángulos para indicar que las carreras podían desplegarse. Estas sugerencias contribuyeron a mejorar la claridad y la interacción de V4.
+**Lo que nos llevamos para nuestro proyecto:** La retroalimentación del grupo 10 contribuyó a mejorar el contraste entre hombres y mujeres e incorporar triángulos para indicar que las áreas podían desplegarse. Aunque sugirieron agrandar el mapa, decidimos mantener su tamaño y el protagonismo del gráfico de puntos, que permite comparar las regiones con mayor precisión.

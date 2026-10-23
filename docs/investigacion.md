@@ -91,7 +91,7 @@ Tablas completas en CSV en `docs/tablas/`; se regeneran con `procesamiento/scrip
 - Las áreas que más se feminizan son Agropecuaria (+19 puntos) y Arte y Arquitectura (+17).
 - La vista por regiones muestra la primera mitad de la historia; la segunda está en estos datos.
 
-## Decisión pendiente: ¿qué clasificación de áreas usar?
+## Decisión sobre la clasificación de áreas
 
 "Tecnología" en `area_conocimiento` (MINEDUC) mezcla carreras distintas. Al separarla con CINE-F 2013,
 en 2026 queda así (pregrado):
@@ -111,8 +111,11 @@ un promedio de 21 %, y algunas carreras de Servicios que ya llegaron a la parida
 | **Cambiar a CINE-F 2013** | Separa TIC de Ingeniería (el ángulo STEM más fino); estándar internacional, comparable con otros países | Nombres más largos y menos familiares ("Servicios", "Ciencias naturales, matemáticas y estadística") |
 | **Mixto**: MINEDUC en la vista general y CINE al abrir "Tecnología" | Mantiene lo familiar y muestra el detalle donde importa | Dos clasificaciones en la misma página: hay que explicarlo bien |
 
-*Decisión del grupo:* _pendiente — anotar aquí la opción elegida y por qué (sirve como rationale en
-`entrega.md`)._
+**Decisión del grupo:** mantener la clasificación MINEDUC (`area_conocimiento`) en la visualización.
+Sus nombres son oficiales en Chile y más familiares para el público objetivo, estudiantes que están
+eligiendo carrera. Además, usar una sola clasificación hace más directa la lectura de áreas y carreras.
+Reconocemos que el área MINEDUC "Tecnología" agrupa TIC, Ingeniería y Servicios, por lo que su promedio
+no muestra por separado la menor participación de mujeres en TIC. Esa limitación queda documentada.
 
 ## Referencias de diseño / sonificación
 
