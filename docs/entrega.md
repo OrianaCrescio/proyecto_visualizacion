@@ -1,10 +1,5 @@
 # Entrega 1 · Documento de proceso · IIC2026
 
-> Lo marcado con **[COMPLETAR]** son datos que solo tenemos nosotras (apuntes de R2 y R3, hashes,
-> links a video). Buscar `[COMPLETAR]` antes de entregar y borrar esta nota. lo mismo con **[VERIFICAR]**
-
----
-
 ## 1. Portada
 
 - **Grupo:** N°1
@@ -149,7 +144,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 - **Qué adoptamos:** en V3, letras más grandes y el indicador ▸ en cada área. En V4, el eje con menos
   marcas y el título "% de mujeres", el achurado en vez de la marca negra, y la leyenda del sonido.
 - **Qué descartamos:** agrandar el mapa a costa del gráfico de puntos. El área de cada región pesa más
-  que su matrícula (Aysén se ve enorme con pocos estudiantes); la comparación precisa es la posición.
+  que su matrícula (Aysén se ve enorme con pocos estudiantes); la comparación precisa es la posición. Inicialmente descartamos la sugerencia del grupo 10 de incorporar un tercer color al gráfico de barras de áreas y carreras para comparar la proporción de mujeres del año seleccionado con la de 2007. Nos preocupaba que añadir un tercer color dificultara la lectura de los porcentajes de mujeres, central para nuestro propósito comunicativo. Sin embargo, retomamos una idea similar en la versión 4.
 - **Cómo se ve en V3 y V4:** secciones 7 y 9. Primeros ajustes en `efc7345` ("mini cambios post revisión entre grupos").
 
 ---
@@ -191,8 +186,9 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
   paleta de mayor contraste (sección 9).
 
 **Qué se descartó**
-- Probamos dos líneas gráficas antes de esta (commits `fe04643` "probando colores" y `44dc430` "prueba
-  otra linea grafica"). [COMPLETAR en una línea qué tenían y por qué no quedaron.]
+- La paleta azul y naranja de V2, que ofrecía mayor contraste entre grupos. Priorizamos tonos morados,
+  más representativos de nuestro mensaje y del morado como símbolo de la lucha por la igualdad; en V4
+  retomamos la necesidad de aumentar el contraste con una paleta distinta.
 
 ---
 
