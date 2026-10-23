@@ -275,7 +275,8 @@ amarillo/lavanda; extremos rotulados en el mapa; pista de clic en Carreras y en 
 incorporamos, con su motivo, está en `ronda_1.md`. Estos hallazgos coinciden con lo que dijo el grupo
 10 en la R2, y como en la R3 no hubo indicaciones nuevas, fueron la base de la V4.
 
-**Ronda 2 (V4).** [COMPLETAR después de la sesión, con el formato de `ronda_2.md`.]
+**Ronda 2 (V4).** Se realizaron tres sesiones *thinking aloud* de aproximadamente 8 minutos, con computador y audífonos, observadas por Florencia Godoy. Participaron Amelia Pinilla, Clemente Toledo y Esteban Pavez, evaluando la comprensión y navegación de V4.
+
 - Hallazgos principales (incluido el sonido): U1 comprendió la visualización y valoró su interactividad, aunque tardó en descubrir la segunda pestaña. U2 destacó su simplicidad y sugirió mejorar el scroll y la primera pantalla. U3 tuvo dificultades iniciales de navegación, pero comprendió la información tras recibir orientación. No se recopilaron observaciones específicas sobre el sonido.
 - Efecto en el proceso: Las observaciones de V4 se integraron parcialmente, buscando mejorar la navegación, la visibilidad de las pestañas y la claridad del contenido mediante ajustes acordes al tiempo y las posibilidades del proyecto.
 
