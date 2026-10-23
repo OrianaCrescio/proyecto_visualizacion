@@ -261,7 +261,7 @@ eligiendo carrera y quienes diseñan políticas para atraer mujeres a STEM.
 | Ronda | Fecha | Versión | Participantes | Registro |
 |---|---|---|---|---|
 | 1 | 17 y 18/10/2026 | V3 | U1 Andrés Rodríguez (egresado de Ing. en TI, emprendimiento en IA); U2 Pablo Huidobro y U3 Jacinta Velao (estudiantes universitarios) | [ronda_1.md](evaluacion_usuarios/ronda_1.md) |
-| 2 | 22/10/2026 | V4 | [COMPLETAR] | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
+| 2 | 22/10/2026 | V4 | U1 Amelia Pinilla (Ing. Estructural UC); U2 Clemente Toledo (estudiante de TI); U3 Esteban Pavez (estudiante universitario) | [ronda_2.md](evaluacion_usuarios/ronda_2.md) |
 
 **Ronda 1 (V3).** Thinking aloud de ~8 minutos con U2 y U3, sin explicarles la interfaz; con U1 (Andrés)
 quedaron los comentarios, no la bitácora. Hallazgos:
@@ -280,9 +280,8 @@ incorporamos, con su motivo, está en `ronda_1.md`. Estos hallazgos coinciden co
 10 en la R2, y como en la R3 no hubo indicaciones nuevas, fueron la base de la V4.
 
 **Ronda 2 (V4).** [COMPLETAR después de la sesión, con el formato de `ronda_2.md`.]
-- Hallazgos principales (incluido el sonido): [COMPLETAR]
-- Efecto en el proceso: [COMPLETAR. Si se alcanza a corregir algo hoy: "V4 → V4.1" con su commit. Si no,
-  decir qué cambiaríamos y por qué no se incorporó.]
+- Hallazgos principales (incluido el sonido): U1 comprendió la visualización y valoró su interactividad, aunque tardó en descubrir la segunda pestaña. U2 destacó su simplicidad y sugirió mejorar el scroll y la primera pantalla. U3 tuvo dificultades iniciales de navegación, pero comprendió la información tras recibir orientación. No se recopilaron observaciones específicas sobre el sonido.
+- Efecto en el proceso: Las observaciones de V4 se integraron parcialmente, buscando mejorar la navegación, la visibilidad de las pestañas y la claridad del contenido mediante ajustes acordes al tiempo y las posibilidades del proyecto.
 
 ---
 
@@ -307,7 +306,4 @@ sonido que acompaña el salto.
 - Conservar la vista alineada y la de planeta (buenas leyendas); repensar la de órbitas, que muestra la
   distribución del sistema solar pero no responde la pregunta.
 
-**Lo que nos llevamos para nuestro proyecto:** [VERIFICAR] Pedirles ejes para cuantificar nos confirmó
-mantener el eje fijo 0–100 % y la línea de paridad, aunque en V4 bajamos sus marcas de 11 a 5 (también
-por la R2). Ver que sus líneas de tope no servían para comparar nos hizo revisar qué marcas de las
-nuestras se entendían: la de 2007 no, y la cambiamos por el achurado.
+**Lo que nos llevamos para nuestro proyecto:** La retroalimentación del grupo 10 nos ayudó a dar mayor protagonismo al mapa, mejorar el contraste de colores entre hombres y mujeres e incorporar triángulos para indicar que las carreras podían desplegarse. Estas sugerencias contribuyeron a mejorar la claridad y la interacción de V4.
