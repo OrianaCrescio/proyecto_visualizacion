@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matrícula en Educación Superior en Chile</title>
+
+    <!-- ?v=N obliga al navegador a bajar la versión nueva: súbanlo cuando cambien CSS/JS -->
+    <link rel="stylesheet" href="css/style.css?v=20">
+</head>
+
+<body>
+
+
+
+    <header class="banda">
+        <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
+
+        <p class="subtitle">
+            Evolución de la proporción de mujeres matriculadas
+            en las regiones y carreras de Chile.
+        </p>
+    </header>
+
+    <main>
+
+        <div class="tabs" role="tablist" aria-label="Visualizaciones">
+            <button
+                id="tab-regiones"
+                class="tab-button"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="visualizacion"
+                tabindex="0"
+            >
+                Regiones
+            </button>
+            <button
+                id="tab-carreras"
+                class="tab-button"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="carreras"
+                tabindex="-1"
+            >
+                Carreras
+            </button>
+        </div>
+
+        <section id="visualizacion" class="tab-panel" role="tabpanel" aria-labelledby="tab-regiones" tabindex="0">
+            <div class="year-container">
+                <span>Año</span>
+                <strong id="year">1984</strong>
+            </div>
+
+            <div class="slider-container">
+                <span>1984</span>
+
+                <button id="play-button" type="button">
+                    ▶ Play
+                </button>
+
+                <input
+                    type="range"
+                    id="year-slider"
+                    min="1984"
+                    max="2025"
+                    value="1984"
+                    step="1"
+                >
+
+                <span>2025</span>
+            </div>
+
+            <div class="sound-container">
+                <p class="sound-legend">
+                    🔊 Pasa el cursor por una región para escucharla: un coro <strong>grave</strong>
+                    (a la izquierda) son los <strong class="txt-hombres">hombres</strong> y uno
+                    <strong>agudo</strong> (a la derecha) son las <strong class="txt-mujeres">mujeres</strong>.
+                    El grupo que es mayoría suena más fuerte; si suenan parejo, hay paridad.
+                </p>
+            </div>
+
+            <div class="regiones-layout">
+                <div id="mapa" class="mapa-box"></div>
+                <div id="chart"></div>
+            </div>
+
+            <p class="fuente">
+                Fuente: Biblioteca del Congreso Nacional, <a href="https://www.bcn.cl/siit/estadisticasterritoriales/tema?id=76">SIIT – Estadísticas territoriales</a>,
+                matrícula en educación superior por sexo y región 1984–2025. Mapa: BCN, mapas vectoriales.
+            </p>
+            <p class="fuente versiones">
+                Versiones anteriores: <a href="../../v1/pagina/">V1</a> · <a href="../../v2/pagina/">V2</a> · <a href="../../v3/pagina/">V3</a>
+            </p>
+        </section>
+        <section id="carreras" class="tab-panel" role="tabpanel" aria-labelledby="tab-carreras" tabindex="0" hidden>
+            <header class="seccion-header">
+                <h2>Son mayoría, pero no en todas las áreas</h2>
+
+                <p class="subtitle">
+                    Matrícula de pregrado por área del conocimiento: hombres desde la izquierda,
+                    mujeres desde la derecha. Pasa el cursor para escuchar los dos coros
+                    (grave = hombres, agudo = mujeres).
+                </p>
+
+                <p class="pista-clic">
+                    ▸ Haz clic en un área para ver sus 15 carreras con más matrícula.
+                </p>
+            </header>
+
+            <div class="year-container">
+                <span>Año</span>
+                <strong id="anio-carreras">2026</strong>
+            </div>
+
+            <div class="slider-container">
+                <span id="min-carreras">2007</span>
+
+                <button id="play-carreras" type="button">
+                    ▶ Play
+                </button>
+
+                <input type="range" id="slider-carreras" min="2007" max="2026" value="2026" step="1">
+                <span id="max-carreras">2026</span>
+            </div>
+
+            <div class="leyenda">
+                <span><i class="cuadro hombres"></i>Hombres</span>
+                <span><i class="cuadro mujeres"></i>Mujeres</span>
+                <span><i class="linea-paridad"></i>Paridad (50 %)</span>
+                <span><i class="achurado"></i>Cambio desde 2007</span>
+                <span class="leyenda-total">Cifra a la derecha: total matriculados</span>
+            </div>
+
+            <div id="chart-areas" class="chart-box"></div>
+
+            <div id="detalle-carreras" class="chart-box" hidden>
+                <div class="detalle-header">
+                    <h3 id="titulo-detalle"></h3>
+                    <button id="volver-areas" type="button">← Volver a áreas</button>
+                </div>
+                <div id="chart-carreras"></div>
+            </div>
+
+            <p class="fuente">
+                Fuente: Centro de Estudios MINEDUC, <a href="https://datosabiertos.mineduc.cl/matricula-en-educacion-superior/">Base de Matrícula en Educación Superior</a> 2007–2026
+                (microdatos por estudiante). Solo pregrado.
+            </p>
+            <p class="fuente versiones">
+                Versiones anteriores: <a href="../../v1/pagina/">V1</a> · <a href="../../v2/pagina/">V2</a> · <a href="../../v3/pagina/">V3</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <p>Proyecto del curso IIC2026 Visualización de Información · Pontificia Universidad Católica de Chile · 2026</p>
+    </footer>
+
+
+    <!-- D3 -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Nuestro código -->
+    <script src="js/sonido.js?v=12"></script>
+    <script src="js/regiones.js?v=13"></script>
+    <script src="js/mapa.js?v=10"></script>
+    <script src="js/carreras.js?v=13"></script>
+    <script src="js/tabs.js?v=2"></script>
+
+</body>
+</html>

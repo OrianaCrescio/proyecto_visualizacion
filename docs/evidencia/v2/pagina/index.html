@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matrícula en Educación Superior en Chile</title>
+
+    <!-- ?v=N obliga al navegador a bajar la versión nueva: súbanlo cuando cambien CSS/JS -->
+    <link rel="stylesheet" href="css/style.css?v=7">
+</head>
+
+<body>
+<!-- VNAV:inicio (barra para cambiar de versión) -->
+<style>
+/* Barra de versiones: estilos propios (con la paleta de la V4) para que se vea igual en todas las versiones */
+@font-face { font-family: "VNAV Mono"; src: url("../../../../pagina/fonts/martian-mono-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "VNAV Inter"; src: url("../../../../pagina/fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+.vnav { background: #f3f0f6; border-bottom: 1px solid #e3d9ec; margin: 0; }
+.vnav-in { max-width: 1100px; margin: 0 auto; padding: 14px 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px;
+           font: 16px/1.3 "VNAV Inter", system-ui, -apple-system, sans-serif; color: #241a33; box-sizing: border-box; }
+.vnav-titulo { font-family: "VNAV Mono", ui-monospace, monospace; font-weight: 700; font-size: 15px; letter-spacing: 1px;
+               text-transform: uppercase; margin-right: 6px; }
+.vnav a, .vnav strong { display: inline-flex; align-items: baseline; gap: 8px; padding: 9px 16px; border-radius: 6px;
+                        font-family: "VNAV Mono", ui-monospace, monospace; font-weight: 700; font-size: 16px; text-decoration: none; }
+.vnav a { background: #fff; color: #241a33; border: 1.5px solid #d6c9e3; }
+.vnav a:hover { border-color: #6f4c9b; background: #ebe3f3; }
+.vnav a:focus-visible { outline: 2px solid #6f4c9b; outline-offset: 2px; }
+.vnav strong { background: #6f4c9b; color: #fff; border: 1.5px solid #6f4c9b; }
+.vnav small { font-family: "VNAV Inter", system-ui, sans-serif; font-weight: 500; font-size: 13px; opacity: .8; }
+@media (max-width: 600px) { .vnav-in { padding: 12px 16px; } .vnav a, .vnav strong { padding: 8px 12px; font-size: 15px; } }
+</style>
+<nav class="vnav" aria-label="Versiones del proyecto"><div class="vnav-in"><span class="vnav-titulo">Versiones</span> <a href="../../v1/pagina/">V1<small>28/09</small></a> <strong aria-current="page">V2<small>07/10</small></strong> <a href="../../v3/pagina/">V3<small>13/10</small></a> <a href="../../../../pagina/">V4<small>22/10 · actual</small></a></div></nav>
+<!-- VNAV:fin -->
+
+
+
+    <main>
+        <header>
+            <h1>¿Cómo ha cambiado la participación de las mujeres en la educación superior?</h1>
+
+            <p class="subtitle">
+                Evolución de la proporción de mujeres matriculadas
+                en las regiones y carreras de Chile.
+            </p>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Visualizaciones">
+            <button
+                id="tab-regiones"
+                class="tab-button"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="visualizacion"
+                tabindex="0"
+            >
+                Regiones
+            </button>
+            <button
+                id="tab-carreras"
+                class="tab-button"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="carreras"
+                tabindex="-1"
+            >
+                Carreras
+            </button>
+        </div>
+
+        <section id="visualizacion" class="tab-panel" role="tabpanel" aria-labelledby="tab-regiones" tabindex="0">
+            <div class="year-container">
+                <span>Año</span>
+                <strong id="year">1984</strong>
+            </div>
+
+            <div class="slider-container">
+                <span>1984</span>
+
+                <button id="play-button" type="button">
+                    ▶ Play
+                </button>
+
+                <input
+                    type="range"
+                    id="year-slider"
+                    min="1984"
+                    max="2025"
+                    value="1984"
+                    step="1"
+                >
+
+                <span>2025</span>
+            </div>
+
+            <div class="sound-container">
+                <p class="sound-legend">
+                    Pasa el cursor por una región o barra para escuchar un acorde
+                    según las proporciones de hombres y mujeres. El sonido se
+                    detiene al salir del elemento.
+                </p>
+            </div>
+
+            <div class="regiones-layout">
+                <div id="mapa" class="mapa-box"></div>
+                <div id="chart"></div>
+            </div>
+
+            <p class="fuente">
+                Fuente: Biblioteca del Congreso Nacional, <a href="https://www.bcn.cl/siit/estadisticasterritoriales/tema?id=76">SIIT – Estadísticas territoriales</a>,
+                matrícula en educación superior por sexo y región 1984–2025. Mapa: BCN, mapas vectoriales.
+            </p>
+        </section>
+        <section id="carreras" class="tab-panel" role="tabpanel" aria-labelledby="tab-carreras" tabindex="0" hidden>
+            <header class="seccion-header">
+                <h2>Son mayoría, pero no en todas las áreas</h2>
+
+                <p class="subtitle">
+                    Matrícula de pregrado por área del conocimiento: hombres desde la izquierda,
+                    mujeres desde la derecha. Pasa el cursor para escuchar su proporción;
+                    haz clic en un área para ver sus carreras.
+                </p>
+            </header>
+
+            <div class="year-container">
+                <span>Año</span>
+                <strong id="anio-carreras">2026</strong>
+            </div>
+
+            <div class="slider-container">
+                <span id="min-carreras">2007</span>
+                <input type="range" id="slider-carreras" min="2007" max="2026" value="2026" step="1">
+                <span id="max-carreras">2026</span>
+            </div>
+
+            <div class="leyenda">
+                <span><i class="cuadro hombres"></i>Hombres</span>
+                <span><i class="cuadro mujeres"></i>Mujeres</span>
+                <span><i class="linea-paridad"></i>Paridad (50 %)</span>
+                <span><i class="linea-base"></i>División en 2007</span>
+                <span class="leyenda-total">Cifra a la derecha: total matriculados</span>
+            </div>
+
+            <div id="chart-areas" class="chart-box"></div>
+
+            <div id="detalle-carreras" class="chart-box" hidden>
+                <div class="detalle-header">
+                    <h3 id="titulo-detalle"></h3>
+                    <button id="volver-areas" type="button">← Volver a áreas</button>
+                </div>
+                <div id="chart-carreras"></div>
+            </div>
+
+            <p class="fuente">
+                Versiones anteriores: <a href="../../v1/pagina/">V1</a> ·
+                Fuente: Centro de Estudios MINEDUC, <a href="https://datosabiertos.mineduc.cl/matricula-en-educacion-superior/">Base de Matrícula en Educación Superior</a> 2007–2026
+                (microdatos por estudiante). Solo pregrado.
+            </p>
+        </section>
+    </main>
+
+
+    <!-- D3 -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Nuestro código -->
+    <script src="js/sonido.js?v=11"></script>
+    <script src="js/regiones.js?v=8"></script>
+    <script src="js/mapa.js?v=5"></script>
+    <script src="js/carreras.js?v=6"></script>
+    <script src="js/tabs.js?v=2"></script>
+
+</body>
+</html>
